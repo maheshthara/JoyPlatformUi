@@ -1,0 +1,96 @@
+/* General container styling */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  /* Welcome section styling */
+  .welcome-section {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .welcome-section h1 {
+    font-size: 2.5rem;
+    color: #4a90e2;
+  }
+  
+  .welcome-section p {
+    font-size: 1.2rem;
+    color: #666;
+  }
+  
+  /* Quick access section styling */
+  .quick-access {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 30px;
+  }
+  
+  .quick-access h2 {
+    font-size: 1.8rem;
+    color: #4a90e2;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .access-links {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .card {
+    flex: 1;
+    padding: 20px;
+    background-color: #f7f9fc;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+  
+  .card h3 {
+    font-size: 1.5rem;
+    color: #4a90e2;
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  /* Daily quote section styling */
+  .daily-quote {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #e6f0ff;
+    border-left: 5px solid #4a90e2;
+    border-radius: 4px;
+    text-align: center;
+  }
+  
+  .daily-quote h2 {
+    font-size: 1.8rem;
+    color: #4a90e2;
+  }
+  
+  .daily-quote p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-top: 10px;
+  }
+  
