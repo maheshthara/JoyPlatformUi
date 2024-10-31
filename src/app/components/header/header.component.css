@@ -2,9 +2,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #4a90e2; /* Header background color */
+    background-color:whitesmoke ; /* Header background color */
     color: white;
-    padding: 10px 20px;
+    padding: 30px 80px;
   }
   
   .logo h1 {
@@ -25,7 +25,7 @@
   }
   
   .nav-links a {
-    color: white;
+    color: blue;
     text-decoration: none;
     font-size: 1.1rem;
     transition: color 0.3s;
@@ -60,4 +60,37 @@
   a:hover {
     color: #357ABD; /* Change color on hover */
   }
-  
+  .search-bar {
+    flex: 2; /* Allow search bar to take available space */
+    display: flex;
+    justify-content: center; /* Center the search bar */
+}
+.input-group {
+    width: 100%; /* Full width for the input group */
+    max-width: 400px; /* Maximum width for the search bar */
+}
+
+.form-control {
+    padding: 10px 40px; /* Padding for input, add extra for icon */
+    border-radius: 25px; /* Rounded corners */
+    border: 1px solid #ced4da; /* Light border color */
+    transition: border-color 0.3s; /* Smooth transition */
+}
+.form-control:focus {
+    border-color: #007bff; /* Change border color on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Light shadow on focus */
+}
+
+.input-group-append .btn {
+    border-radius: 20px; /* Rounded corners for the button */
+    padding: 10px 15px; /* Add padding to the button */
+}
+
+.btn-outline-secondary {
+    background-color: #fff; /* White background for the button */
+    color: #6c757d; /* Default text color */
+}
+
+.btn-outline-secondary:hover {
+    background-color: #e2e6ea; /* Light gray on hover */
+}
