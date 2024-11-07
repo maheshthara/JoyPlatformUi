@@ -18,11 +18,11 @@ export class SignupComponent {
   signupForm: FormGroup;
 
   constructor(private fb: FormBuilder, private authService: AuthService,private toastr:ToastrService,private router:Router) {
-      this.signupForm = this.fb.group({
-          username: ['', Validators.required],
-          email: ['', [Validators.required, Validators.email]],
-          password: ['', Validators.required]
-      });
+        this.signupForm = this.fb.group({
+            username: ['', Validators.required],
+            email: ['', [Validators.required, Validators.email]],
+            password: ['', Validators.required]
+        });
   }
 
   onSubmit() {
