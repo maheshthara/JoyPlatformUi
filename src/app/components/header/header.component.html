@@ -1,17 +1,22 @@
 <nav class="header-nav">
     <div class="logo">
-      <h1>Joy</h1> <!-- Logo can be your platform name -->
+        <h1 style="color: brown;">Joy</h1> <!-- Logo can be your platform name -->
     </div>
+    
+    <div class="search-bar">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search..."  aria-label="Search">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button">
+                    <i class="fas fa-search"></i> <!-- Font Awesome Search Icon -->
+                </button>
+            </div>
+        </div>
+    </div>
+
     <ul class="nav-links">
-      <li>
-        <a routerLink="/">Home</a>
-      </li>
-      <li>
-        <a routerLink="/signup">Sign Up</a>
-      </li>
-      <li>
-        <a routerLink="/signin">Sign In</a>
-      </li>
+        <li *ngFor="let headerlink of headerLinks">
+            <a [routerLink]="headerlink.route">{{headerlink.label}}</a>
+        </li>
     </ul>
-  </nav>
-  
+</nav>

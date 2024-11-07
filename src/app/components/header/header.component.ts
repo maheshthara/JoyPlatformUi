@@ -5,10 +5,17 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink,RouterLinkActive,CommonModule],
+  imports: [RouterLink, RouterLinkActive, CommonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
 
+  headerLinks = [
+    { label: 'Home', route: '/' },
+    { label: 'Sign Up', route: '/signup' },
+    { label: 'Sign In', route: '/signin' },
+    { label: 'About', route: '/about' },
+
+  ]
 }
