@@ -1,23 +1,22 @@
-<div class="container mt-5">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <h2 class="text-center mb-4">Create an Account</h2>
-        <form (ngSubmit)="onSignup()" #signupForm="ngForm" class="p-4 border rounded bg-light shadow">
-          <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" class="form-control" name="email" required [(ngModel)]="user.email" />
-          </div>
-  
-          <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" id="password" class="form-control" name="password" required [(ngModel)]="user.password" />
-          </div>
-  
-          <button type="submit" class="btn btn-primary btn-block mt-4">Sign Up</button>
-  
-          <p class="text-center mt-3">Already have an account? <a routerLink="/signin">Sign In</a></p>
-        </form>
-      </div>
-    </div>
-  </div>
-  
+<div class="signup-container">
+    <h2>Sign Up</h2>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" formControlName="username" class="form-control" placeholder="Enter username">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" formControlName="email" class="form-control" placeholder="Enter email">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" formControlName="password" class="form-control" placeholder="Enter password">
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="signupForm.invalid">Sign Up</button>
+        <p class="text-center mt-3">Don't have an account? <a routerLink="/signin">Sign in</a></p>
+    </form>
+</div>
