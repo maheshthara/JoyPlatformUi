@@ -20,6 +20,16 @@ export class HeaderComponent implements OnInit {
     {label:'Profile',route:'/profile'}
 
   ]
+  showResources = false;
+  resources = [
+    { label: 'Health Tips', link: '/resources/health-tips' },
+    { label: 'Nutrition Plans', link: '/resources/nutrition-plans' },
+    { label: 'Exercise Guides', link: '/resources/exercise-guides' },
+    { label: 'Mental Wellness Articles', link: '/resources/mental-wellness' },
+    { label: 'Community Forums', link: '/resources/community-forums' },
+    { label: 'Educational Videos', link: '/resources/educational-videos' },
+    { label: 'Professional Directory', link: '/resources/professionals' }
+  ];
 
   isLoggedIn: boolean = false;  // Default login state
 
@@ -32,7 +42,9 @@ export class HeaderComponent implements OnInit {
     });
     console.log(this.isLoggedIn);
   }
-
+  navigateToResource(link: string): void {
+    this.router.navigate([link]);
+  }
   logout(): void {
     this.authService.logout();  // Call logout from AuthService
     this.router.navigate(['/signin']); // Redirect to sign-in page

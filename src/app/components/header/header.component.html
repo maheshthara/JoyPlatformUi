@@ -22,7 +22,20 @@
         {{ headerlink.label }}
       </a>
     </li>
-
+    <nav class="resources-nav">
+      <div class="resources-container" (mouseover)="showResources = true" (mouseleave)="showResources = false">
+        <div class="resources-title">
+          Resources
+          <span class="down-arrow">&#9662;</span> <!-- Unicode for a down arrow -->
+        </div>
+        <ul class="resources-dropdown" *ngIf="showResources">
+          <li *ngFor="let resource of resources" (click)="navigateToResource(resource.link)">
+            {{ resource.label }}
+          </li>
+        </ul>
+      </div>
+    </nav>
+    
     <!-- Show Logout if user is logged in -->
     <li *ngIf="isLoggedIn">
       <a (click)="logout()">Logout</a>

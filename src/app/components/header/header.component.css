@@ -94,3 +94,41 @@
 .btn-outline-secondary:hover {
     background-color: #e2e6ea; /* Light gray on hover */
 }
+.resources-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.resources-title {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  color: #0066cc;
+}
+
+.down-arrow {
+  margin-left: 5px;
+  font-size: 14px;
+}
+
+.resources-dropdown {
+  display: block;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+  width: 200px;
+}
+
+.resources-dropdown li {
+  padding: 8px 12px;
+  cursor: pointer;
+  color: #333;
+}
+
+.resources-dropdown li:hover {
+  background-color: #f1f1f1;
+}
