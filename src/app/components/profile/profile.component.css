@@ -1,0 +1,168 @@
+/* Container for the profile page */
+.profile-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-container h2 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+  }
+  
+  /* Container to hold goals and the new goal form side by side */
+  .goals-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap; /* Ensures that the layout wraps on smaller screens */
+  }
+  
+  .health-goals, .new-goal-form {
+    width: 48%; /* Both will take up 48% of the width, leaving 4% for spacing */
+    box-sizing: border-box;
+  }
+  
+  .health-goals h3, .new-goal-form h3 {
+    font-size: 24px;
+    color: #34495e;
+    margin-bottom: 15px;
+  }
+  
+  /* Styling for the "No Goals" message */
+  .no-goals-message {
+    text-align: center;
+    font-size: 18px;
+    color: #e74c3c;
+  }
+  
+  /* Goal Cards */
+  .goal-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    padding: 20px;
+    transition: all 0.3s ease;
+  }
+  
+  .goal-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  .goal-card-body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .goal-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2980b9;
+  }
+  
+  .goal-description {
+    font-size: 16px;
+    color: #7f8c8d;
+  }
+  
+  .goal-target-date {
+    font-size: 14px;
+    color: #95a5a6;
+    margin-top: 10px;
+  }
+  
+  /* Delete Button */
+  .delete-btn {
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 14px;
+    margin-top: 15px;
+  }
+  
+  .delete-btn:hover {
+    background-color: #c0392b;
+  }
+  
+  .delete-btn i {
+    margin-right: 5px;
+  }
+  
+  /* New Goal Form */
+  .new-goal-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .new-goal-form input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+  }
+  
+  .new-goal-form input:focus {
+    border-color: #2980b9;
+    outline: none;
+  }
+  
+  .submit-btn {
+    background-color: #2980b9;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  .submit-btn:hover {
+    background-color: #3498db;
+  }
+  
+  .submit-btn:active {
+    transform: scale(0.98);
+  }
+  
+  /* Responsiveness for smaller screens */
+  @media (max-width: 768px) {
+    .profile-container {
+      width: 90%;
+    }
+  
+    .goal-card {
+      padding: 15px;
+    }
+  
+    .goal-title {
+      font-size: 18px;
+    }
+  
+    .goal-description, .goal-target-date {
+      font-size: 14px;
+    }
+  
+    .goals-container {
+      flex-direction: column; /* Stack goals and form vertically on small screens */
+    }
+  
+    .health-goals, .new-goal-form {
+      width: 100%; /* Take full width on smaller screens */
+    }
+  }
+  

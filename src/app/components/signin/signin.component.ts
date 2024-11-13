@@ -28,7 +28,7 @@ constructor(private fb:FormBuilder,private authService:AuthService,private route
     this.authService.login(userLogin).subscribe({
       next: (response) => {
           console.log('Signin successful:', response);
-          this.toastr.success('Signin successful!', 'Welcome to Joy');
+          this.toastr.success(`${userLogin.username}`, 'Welcome to Joy');
           this.router.navigate(['/home']);
         },
       error: (error) => {

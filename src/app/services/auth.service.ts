@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, tap } from 'rxjs';
 import { UserRegistration } from '../models/UserRegistration';
 import { UserLogin } from '../models/UserLogin';
+import { User } from '../models/HealthGoal';
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +27,27 @@ export class AuthService {
       tap((response: any) => {
         if (response && response.token) {
           localStorage.setItem('jwtToken', response.token); // Save token to local storage
+          console.log('Token stored:', localStorage.getItem('jwtToken'));
           this.isLoggedInSubject.next(true);
         }
+      })
+    );
+  }
+  // Fetch user Details by extracting user ID from JWT token
+  getUserDetails(): Observable<User[]> {
+    const token = localStorage.getItem('jwtToken'); // Retrieve token from localStorage
+    if (!token) {
+      throw new Error('User is not authorized. No token found.');
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+    });
+
+    return this.http.get<User[]>(`${this.apiUrl}/getUserDetails`, { headers }).pipe(
+      catchError((error) => {
+        console.error('Error fetching goals:', error);
+        throw error;
       })
     );
   }

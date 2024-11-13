@@ -1,37 +1,31 @@
 <nav class="header-nav">
-    <div class="logo">
-      <h1 style="color: brown;">Joy</h1> <!-- Logo can be your platform name -->
-    </div>
-    
-    <div class="search-bar">
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search..." aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button">
-            <i class="fas fa-search"></i> <!-- Font Awesome Search Icon -->
-          </button>
-        </div>
+  <div class="logo">
+    <h1 style="color: brown;">Joy</h1> <!-- Logo can be your platform name -->
+  </div>
+
+  <div class="search-bar">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search..." aria-label="Search">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button">
+          <i class="fas fa-search"></i> <!-- Font Awesome Search Icon -->
+        </button>
       </div>
     </div>
-  
-    <ul class="nav-links">
-      <li *ngFor="let headerlink of headerLinks">
-        <!-- Show Sign In and Sign Up only if user is not logged in -->
-        <a *ngIf="headerlink.label !== 'Sign In' && headerlink.label !== 'Sign Up' || !isLoggedIn" [routerLink]="headerlink.route">
-          {{ headerlink.label }}
-        </a>
-        <!-- <a *ngIf="headerlink.label === 'Sign In' && !isLoggedIn" [routerLink]="headerlink.route">
-          {{ headerlink.label }}
-        </a>
-        <a *ngIf="headerlink.label === 'Sign Up' && !isLoggedIn" [routerLink]="headerlink.route">
-          {{ headerlink.label }}
-        </a> -->
-      </li>
-  
-      <!-- Show Logout if user is logged in -->
-      <li *ngIf="isLoggedIn">
-        <a (click)="logout()">Logout</a>
-      </li>
-    </ul>
-  </nav>
-  
+  </div>
+
+  <ul class="nav-links">
+    <li *ngFor="let headerlink of headerLinks">
+      <!-- Show links based on conditions -->
+      <a *ngIf="(headerlink.label === 'About' || headerlink.label === 'Profile') ? isLoggedIn : !isLoggedIn || (headerlink.label !== 'Sign In' && headerlink.label !== 'Sign Up')" 
+         [routerLink]="headerlink.route">
+        {{ headerlink.label }}
+      </a>
+    </li>
+
+    <!-- Show Logout if user is logged in -->
+    <li *ngIf="isLoggedIn">
+      <a (click)="logout()">Logout</a>
+    </li>
+  </ul>
+</nav>

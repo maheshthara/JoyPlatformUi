@@ -30,6 +30,7 @@ export class HeaderComponent implements OnInit {
     this.authService.isLoggedIn$.subscribe((status) => {
       this.isLoggedIn = status;  // Update the login state
     });
+    console.log(this.isLoggedIn);
   }
 
   logout(): void {
