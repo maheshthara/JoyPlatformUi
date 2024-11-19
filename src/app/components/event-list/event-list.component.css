@@ -1,0 +1,40 @@
+.container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .event-card {
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-title {
+    font-weight: bold;
+  }
+  
+  .btn-gradient {
+    background: linear-gradient(to right, #007bff, #00c6ff);
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 50px;
+    transition: background 0.3s;
+  }
+  
+  .btn-gradient:hover {
+    background: linear-gradient(to right, #0056b3, #0091cc);
+    cursor: pointer;
+  }
+  
+  .text-primary {
+    color: #007bff;
+  }
+  
+  .text-muted {
+    color: #6c757d;
+  }
+  

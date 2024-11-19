@@ -1,51 +1,41 @@
 <nav class="header-nav">
   <div class="logo">
-    <h1 style="color: brown;">Joy</h1> <!-- Logo can be your platform name -->
+    <h1>Newham</h1>
   </div>
 
-  <div class="search-bar">
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search..." aria-label="Search">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button">
-          <i class="fas fa-search"></i> <!-- Font Awesome Search Icon -->
-        </button>
-      </div>
+  <div class="search-bar-container">
+    <div class="search-bar">
+      <input type="text" class="search-input" placeholder="Search...">
+      <button class="search-button">
+        <i class="fas fa-search"></i> <!-- Font Awesome Search Icon -->
+      </button>
     </div>
-  </div>
+  </div>  
 
   <ul class="nav-links">
-    <!-- Display header links based on the user's login state -->
     <ng-container *ngFor="let headerlink of headerLinks">
-      <li *ngIf="(headerlink.label === 'Sign In' || headerlink.label === 'Sign Up' || headerlink.label === 'AdminSign') ? !isLoggedIn && !isAdmin : (headerlink.label === 'About' || headerlink.label === 'Profile' || headerlink.label === 'Events'||headerlink.label==='Home') ? isLoggedIn : !isLoggedIn">
-        <a [routerLink]="headerlink.route">
-          {{ headerlink.label }}
-        </a>
+      <li *ngIf="(headerlink.label === 'Sign In' || headerlink.label === 'Sign Up' || headerlink.label === 'AdminSign') ? !isLoggedIn && !isAdmin : (headerlink.label === 'About' || headerlink.label === 'Profile' || headerlink.label === 'Events' || headerlink.label === 'Home') ? isLoggedIn : !isLoggedIn">
+        <a [routerLink]="headerlink.route">{{ headerlink.label }}</a>
       </li>
     </ng-container>
 
-    <!-- Admin specific links -->
     <ng-container *ngIf="isAdmin">
       <li *ngFor="let adminLink of adminLinks">
         <a [routerLink]="adminLink.route">{{ adminLink.label }}</a>
       </li>
     </ng-container>
 
-    <nav class="resources-nav">
-      <div class="resources-container" (mouseover)="showResources = true" (mouseleave)="showResources = false">
-        <div class="resources-title">
-          Resources
-          <span class="down-arrow">&#9662;</span> <!-- Unicode for a down arrow -->
-        </div>
-        <ul class="resources-dropdown" *ngIf="showResources">
-          <li *ngFor="let resource of resources" (click)="navigateToResource(resource.link)">
-            {{ resource.label }}
-          </li>
-        </ul>
+    <li class="resources-item" (mouseover)="showResources = true" (mouseleave)="showResources = false">
+      <div class="resources-title">
+        Resources <span class="down-arrow">&#9662;</span>
       </div>
-    </nav>
+      <ul class="resources-dropdown" *ngIf="showResources">
+        <li *ngFor="let resource of resources" (click)="navigateToResource(resource.link)">
+          {{ resource.label }}
+        </li>
+      </ul>
+    </li>
 
-    <!-- Show Logout if user or admin is logged in -->
     <li *ngIf="isLoggedIn || isAdmin">
       <a (click)="logout()">Logout</a>
     </li>

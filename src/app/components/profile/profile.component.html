@@ -1,44 +1,39 @@
 <div class="profile-container">
-    <h2 *ngIf="user">{{ user.username }}'s Profile</h2>
+  <h2 *ngIf="user" class="profile-title">{{ user.username }}'s Profile</h2>
 
-    <div class="goals-container">
-      <div class="health-goals">
-        <h3 style="color:blue">Your Goals</h3>
+  <div class="profile-content">
+      <!-- Goals Section -->
+      <div class="goals-section">
+          <h3 class="goals-heading">Your Goals</h3>
 
-        <div *ngIf="userGoals.length === 0" class="no-goals-message">
-          No goals set yet. Set a goal now!
-        </div>
-
-        <div *ngFor="let goal of userGoals" class="goal-card">
-          <div class="goal-card-body">
-            <h5 class="goal-title">{{ goal.goalTitle }}</h5>
-            <h6 class="goal-description">{{ goal.description }}</h6>
-            <button class="edit-btn" (click)="openEditModal(goal)">
-              <i class="fas fa-edit"></i> Edit
-            </button>
-            <button class="delete-btn" (click)="deleteGoal(goal.goalId)">
-              <i class="fas fa-trash-alt"></i> Delete
-            </button>
+          <div *ngIf="userGoals.length === 0" class="no-goals-alert">
+              No goals set yet. Set a goal now!
           </div>
-        </div>
+
+          <div *ngFor="let goal of userGoals" class="goal-card">
+              <div class="goal-card-body">
+                  <h5 class="goal-title">{{ goal.goalTitle }}</h5>
+                  <p class="goal-description">{{ goal.description }}</p>
+                  <div class="goal-actions">
+                      <button class="btn edit-btn" (click)="openEditModal(goal)">
+                          <i class="fas fa-edit"></i> Edit
+                      </button>
+                      <button class="btn delete-btn" (click)="deleteGoal(goal.goalId)">
+                          <i class="fas fa-trash-alt"></i> Delete
+                      </button>
+                  </div>
+              </div>
+          </div>
       </div>
 
-      <!-- Modal for Editing a Goal -->
-      <app-goal-edit-modal
-        [showModal]="showEditModal"
-        [editingGoal]="editingGoal"
-        (close)="closeEditModal()"
-        (save)="updateGoal($event)">
-      </app-goal-edit-modal>
-
+      <!-- Add New Goal Form -->
       <div class="new-goal-form">
-        <h3>Add New Goal</h3>
-        <form (ngSubmit)="addGoal()">
-          <input type="text" [(ngModel)]="newGoal.goalId" name="goalId" placeholder="Goal Id" required />
-          <input type="text" [(ngModel)]="newGoal.goalTitle" name="goalTitle" placeholder="Goal Name" required />
-          <input type="text" [(ngModel)]="newGoal.description" name="description" placeholder="Description" required />
-          <button type="submit" class="submit-btn">Add Goal</button>
-        </form>
+          <h3>Add New Goal</h3>
+          <form (ngSubmit)="addGoal()">
+              <input type="text" [(ngModel)]="newGoal.goalTitle" name="goalTitle" placeholder="Goal Title" required />
+              <textarea [(ngModel)]="newGoal.description" name="description" placeholder="Description" required></textarea>
+              <button type="submit" class="btn add-goal-btn">Add Goal</button>
+          </form>
       </div>
-    </div>
+  </div>
 </div>

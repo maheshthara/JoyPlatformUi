@@ -1,0 +1,48 @@
+.confirmation-container {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .confirmation-title {
+    color: #007bff;
+    margin-bottom: 15px;
+  }
+  
+  .event-details p {
+    font-size: 16px;
+    margin: 5px 0;
+    color: #333;
+  }
+  
+  .loading-message {
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+  }
+  
+  .alert {
+    font-size: 14px;
+    color: #d9534f;
+    background-color: #f8d7da;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .btn-gradient {
+    background: linear-gradient(to right, #28a745, #20c997);
+    border: none;
+    color: white;
+    border-radius: 50px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .btn-gradient:hover {
+    background: linear-gradient(to right, #218838, #17a2b8);
+  }
+  

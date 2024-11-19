@@ -1,16 +1,19 @@
-<div *ngIf="event; else loading">
-    <h3>Booking Confirmation</h3>
-    <p>Event: {{ event.eventName }}</p>
-    <p>Date: {{ event.startDate }}</p>
-    <p>Description: {{ event.description }}</p>
-    
-    <button class="btn btn-primary" (click)="confirmationBooking()">Confirm Booking</button>
-    
-    <div *ngIf="bookingError" class="alert alert-danger">
-      {{ bookingError }}
-    </div>
+<div *ngIf="event; else loading" class="confirmation-container">
+  <h3 class="confirmation-title">Booking Confirmation</h3>
+  <div class="event-details">
+    <p><strong>Event:</strong> {{ event.eventName }}</p>
+    <p><strong>Date:</strong> {{ event.startDate | date: 'fullDate' }}</p>
+    <p><strong>Description:</strong> {{ event.description }}</p>
   </div>
-  
-  <ng-template #loading>
+  <button class="btn btn-gradient mt-3" (click)="confirmationBooking()">Confirm Booking</button>
+
+  <div *ngIf="bookingError" class="alert alert-danger mt-3">
+    {{ bookingError }}
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="loading-message">
     <p>Loading event details...</p>
-  </ng-template>
+  </div>
+</ng-template>

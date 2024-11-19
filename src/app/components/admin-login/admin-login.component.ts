@@ -33,7 +33,7 @@ export class AdminLoginComponent implements OnInit {
         this.authService.isAdminLoggedIn()
           console.log('Signin successful:', response);
           this.toastr.success(`${userLogin.username}`, 'Welcome to Joy');
-          this.router.navigate(['/home']);
+          this.router.navigate(['/admin/dashboard']);
         },
       error: (error) => {
           console.error('Signin failed:', error);

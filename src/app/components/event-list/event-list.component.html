@@ -1,17 +1,16 @@
 <div class="container mt-4">
-    <h2 class="mb-4">Available Events</h2>
-    <div class="row">
-      <div class="col-md-4 mb-4" *ngFor="let event of events">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">{{ event.eventName }}</h5>
-            <p class="card-text">Date: {{ event.startDate | date }}</p>
-            <p class="card-text">Location: {{ event.location }}</p>
-            <p class="card-text">Description: {{ event.description }}</p>
-            <button class="btn btn-primary" (click)="bookEvent(event.eventId)">Book Now</button>
-          </div>
+  <h2 class="mb-4 text-center">Available Events</h2>
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let event of events">
+      <div class="card event-card h-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title text-primary">{{ event.eventName }}</h5>
+          <p class="card-text text-muted"><strong>Date:</strong> {{ event.startDate | date: 'fullDate' }}</p>
+          <p class="card-text"><strong>Location:</strong> {{ event.location }}</p>
+          <p class="card-text"><strong>Description:</strong> {{ event.description }}</p>
+          <button class="btn btn-gradient mt-2" (click)="bookEvent(event.eventId)">Book Now</button>
         </div>
       </div>
     </div>
   </div>
-  
+</div>

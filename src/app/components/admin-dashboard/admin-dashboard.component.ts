@@ -48,7 +48,6 @@ export class AdminDashboardComponent implements OnInit{
     this.bookingService.approveBooking(bookingId).subscribe((response) => {
       this.getBookings(); // Refresh bookings after approval
       this.toastr.success('Approved Succesful');
-      this.getBookings();
     });
   }
   getBookings() {
@@ -66,7 +65,8 @@ export class AdminDashboardComponent implements OnInit{
       this.createEvent.push(response);
       this.toastr.success('Event added successfully');
       console.log('Event Succesfully Added:',response);
-      this.getEvents(); // Refresh events after adding a new one
+      this.closeModal(); // Refresh events after adding a new one
+      this.getEvents();
     },
   error=>{
     console.error('Error while adding event',error)
