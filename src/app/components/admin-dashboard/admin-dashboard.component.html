@@ -1,0 +1,18 @@
+<!-- admin-dashboard.component.html -->
+<div class="dashboard-container">
+    <h2>Admin Dashboard</h2>
+    <h3>Manage Events</h3>
+    <div *ngFor="let event of events">
+      <div>{{ event.eventName }}</div>
+      <button (click)="deleteEvent(event.eventId)">Delete</button>
+    </div>
+  
+    <h3>Manage Bookings</h3>
+    <div *ngFor="let booking of bookings">
+      <div>BookingID:{{ booking.userId }}</div>
+      <div>EventID:{{ booking.eventId }}</div>
+      <div>UserID:{{booking.userId}}</div>
+      <button (click)="approveBooking(booking.bookingId)">Approve</button>
+    </div>
+  </div>
+  

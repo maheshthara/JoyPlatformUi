@@ -15,13 +15,22 @@
   </div>
 
   <ul class="nav-links">
-    <li *ngFor="let headerlink of headerLinks">
-      <!-- Show links based on conditions -->
-      <a *ngIf="(headerlink.label === 'About' || headerlink.label === 'Profile') ? isLoggedIn : !isLoggedIn || (headerlink.label !== 'Sign In' && headerlink.label !== 'Sign Up')" 
-         [routerLink]="headerlink.route">
-        {{ headerlink.label }}
-      </a>
-    </li>
+    <!-- Default links for everyone -->
+    <ng-container *ngFor="let headerlink of headerLinks">
+      <li *ngIf="(headerlink.label === 'About' || headerlink.label === 'Profile' || headerlink.label === 'Events') ? isLoggedIn : !isLoggedIn || (headerlink.label !== 'Sign In' && headerlink.label !== 'Sign Up')">
+        <a [routerLink]="headerlink.route">
+          {{ headerlink.label }}
+        </a>
+      </li>
+    </ng-container>
+
+    <!-- Admin specific links -->
+    <ng-container *ngIf="isLoggedIn && isAdmin">
+      <li *ngFor="let adminLink of adminLinks">
+        <a [routerLink]="adminLink.route">{{ adminLink.label }}</a>
+      </li>
+    </ng-container>
+
     <nav class="resources-nav">
       <div class="resources-container" (mouseover)="showResources = true" (mouseleave)="showResources = false">
         <div class="resources-title">
@@ -35,7 +44,7 @@
         </ul>
       </div>
     </nav>
-    
+
     <!-- Show Logout if user is logged in -->
     <li *ngIf="isLoggedIn">
       <a (click)="logout()">Logout</a>

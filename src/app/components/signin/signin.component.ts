@@ -25,7 +25,7 @@ constructor(private fb:FormBuilder,private authService:AuthService,private route
     // Here, you would typically call a service to handle signin
     if(this.signinForm.valid){
     const userLogin: UserLogin = this.signinForm.value;
-    this.authService.login(userLogin).subscribe({
+    this.authService.userLogin(userLogin).subscribe({
       next: (response) => {
           console.log('Signin successful:', response);
           this.toastr.success(`${userLogin.username}`, 'Welcome to Joy');

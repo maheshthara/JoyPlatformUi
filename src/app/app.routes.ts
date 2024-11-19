@@ -5,6 +5,11 @@ import { SigninComponent } from './components/signin/signin.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { EventListComponent } from './components/event-list/event-list.component';
+import { BookingConfirmationComponent } from './components/booking-confirmation/booking-confirmation.component';
+import { AdminLoginComponent } from './components/admin-login/admin-login.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { AddEventComponent } from './components/add-event/add-event.component';
 
 export const routes: Routes = [
     {
@@ -25,5 +30,21 @@ export const routes: Routes = [
     {path:'contact',component:ContactComponent},
     {
         path:'profile',component:ProfileComponent
-    }
+    },
+    {
+        path:'event-list',component:EventListComponent
+    },
+    {
+        path:'book-event/:id',component:BookingConfirmationComponent
+    },
+    {
+        path:'admin/login',component:AdminLoginComponent
+    },
+    {
+        path:'admin/dashboard',component:AdminDashboardComponent
+    },
+    {
+        path:'addEvent',component:AddEventComponent
+    },
+    
 ];
