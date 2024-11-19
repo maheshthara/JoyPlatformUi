@@ -103,4 +103,16 @@
   button:focus {
     outline: none;
   }
+  .button-group {
+    display: flex;
+    gap: 10px; /* Adjust this value to control spacing between buttons */
+  }
+  
+  .event-card .btn {
+    margin-right: 5px; /* Optional: Adds a small space between buttons */
+  }
+  
+  .fas {
+    margin-right: 5px; /* Adds space between the icon and text */
+  }
   

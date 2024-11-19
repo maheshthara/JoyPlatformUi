@@ -1,7 +1,7 @@
 <div class="dashboard-container">
     <div class="header">
       <h2 class="dashboard-title">Admin Dashboard</h2>
-      <button class="btn btn-primary" (click)="openModal()">Add Event</button>
+      <button class="btn btn-success" (click)="openModal()">Add Event</button>
     </div>
   
     <div class="section manage-events">
@@ -10,9 +10,11 @@
         <div class="event-name">{{ event.eventName }}</div>
         <div>
           <button class="btn btn-success" (click)="openModal(event)">
-            <i class="fas fa-edit"></i> Edit
+            <i class="fas fa-edit"></i>
           </button>
-          <button class="btn btn-danger" (click)="deleteEvent(event.eventId)">Delete</button>
+          <button class="btn btn-danger" (click)="deleteEvent(event.eventId)">
+            <i class="fas fa-trash-alt"></i>
+          </button>
         </div>
       </div>
     </div>
@@ -54,7 +56,10 @@
           <div><strong>EventID:</strong> {{ booking.eventId }}</div>
           <div><strong>UserID:</strong> {{ booking.userId }}</div>
         </div>
-        <button class="btn btn-success" (click)="approveBooking(booking.bookingId)">Approve</button>
+        <div class="button-group">
+          <button class="btn btn-success" (click)="approveBooking(booking.bookingId)">Approve</button>
+          <button class="btn btn-danger" (click)="declineBooking(booking.bookingId)">Decline</button>
+        </div>
       </div>
     </div>
   </div>

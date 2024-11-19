@@ -101,6 +101,23 @@ export class BookingService {
       })
     );
   }
+  deleteBooking(bookingId: number): Observable<Bookings> {
+    const token = localStorage.getItem('adminToken'); // Retrieve token from localStorage
+    if (!token) {
+      throw new Error('User is not authorized. No token found.');
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+    });
+
+    return this.http.delete<Bookings>(`${this.apiUrl}/deleteBooking/${bookingId}`, { headers }).pipe(
+      catchError((error) => {
+        console.error('Error booking event:', error);
+        throw error;
+      })
+    );
+  }
   updateEvent(eventId: number,updatedEvent:EventList): Observable<EventList> {
     const token = localStorage.getItem('adminToken'); // Retrieve token from localStorage
     if (!token) {
@@ -111,7 +128,7 @@ export class BookingService {
       'Authorization': `Bearer ${token}`,
     });
 
-    return this.http.delete<EventList>(`${this.apiUrl}/updateEvent/${eventId}`, { headers }).pipe(
+    return this.http.put<EventList>(`${this.apiUrl}/updateEvent/${eventId}`,updatedEvent, { headers }).pipe(
       catchError((error) => {
         console.error('Error booking event:', error);
         throw error;

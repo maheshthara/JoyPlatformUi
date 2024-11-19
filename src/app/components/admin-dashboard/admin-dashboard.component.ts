@@ -34,6 +34,7 @@ export class AdminDashboardComponent implements OnInit{
   ngOnInit() {
     // Fetch events and bookings when dashboard is initialized
     this.getBookings();
+    this.getEvents();
   }
 
   getEvents():void{
@@ -44,12 +45,32 @@ export class AdminDashboardComponent implements OnInit{
     });
   }
 
-  approveBooking(bookingId: number): void {
+  approveBooking(bookingId: number) {
     this.bookingService.approveBooking(bookingId).subscribe((response) => {
-      this.getBookings(); // Refresh bookings after approval
       this.toastr.success('Approved Succesful');
+       // Update the bookings list by removing the approved booking
+       this.bookings = this.bookings.filter((booking) => booking.bookingId !== bookingId);
+
+       // Optionally, refresh the event list to reflect changes (if needed)
+       this.getEvents();
+     },
+     (error) => {
+       console.error('Error approving booking:', error);
+       this.toastr.error('Error while approving booking');
+     }
+   );
+  }
+  declineBooking(bookingId:number)
+  {
+    this.bookingService.deleteBooking(bookingId).subscribe(() => {
+      this.toastr.success('Declined Succesful');
+       // Update the bookings list by removing the approved booking
+       this.bookings = this.bookings.filter((booking) => booking.bookingId !== bookingId);
+       this.getBookings();
+      this.getEvents(); // Refresh events after deleting an event
     });
   }
+
   getBookings() {
     this.bookingService.getBookings().subscribe((data) => {
       this.bookings = data;
