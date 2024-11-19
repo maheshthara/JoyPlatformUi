@@ -30,6 +30,7 @@ export class AdminLoginComponent implements OnInit {
     const userLogin: UserLogin = this.signinForm.value;
     this.authService.Adminlogin(userLogin).subscribe({
       next: (response) => {
+        this.authService.isAdminLoggedIn()
           console.log('Signin successful:', response);
           this.toastr.success(`${userLogin.username}`, 'Welcome to Joy');
           this.router.navigate(['/home']);

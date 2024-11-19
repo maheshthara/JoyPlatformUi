@@ -30,6 +30,23 @@ export class BookingService {
       })
     );
   }
+  getEvents(): Observable<EventList[]> {
+    const token = localStorage.getItem('adminToken'); // Retrieve token from localStorage
+    if (!token) {
+      throw new Error('User is not authorized. No token found.');
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+    });
+
+    return this.http.get<EventList[]>(`${this.apiUrl}/getEvents`, { headers }).pipe(
+      catchError((error) => {
+        console.error('Error fetching goals:', error);
+        throw error;
+      })
+    );
+  }
 
   approveBooking(bookingId: number): Observable<Bookings> {
     const token = localStorage.getItem('adminToken'); // Retrieve token from localStorage
@@ -66,7 +83,21 @@ export class BookingService {
     );
   }
 
-  deleteEvent(eventId: number): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/admin/events/${eventId}`);
+  deleteEvent(eventId: number): Observable<EventList> {
+    const token = localStorage.getItem('adminToken'); // Retrieve token from localStorage
+    if (!token) {
+      throw new Error('User is not authorized. No token found.');
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+    });
+
+    return this.http.delete<EventList>(`${this.apiUrl}/deleteEvent/${eventId}`, { headers }).pipe(
+      catchError((error) => {
+        console.error('Error booking event:', error);
+        throw error;
+      })
+    );
   }
 }

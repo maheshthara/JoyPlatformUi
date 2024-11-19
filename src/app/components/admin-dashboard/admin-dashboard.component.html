@@ -1,18 +1,31 @@
-<!-- admin-dashboard.component.html -->
 <div class="dashboard-container">
-    <h2>Admin Dashboard</h2>
-    <h3>Manage Events</h3>
-    <div *ngFor="let event of events">
-      <div>{{ event.eventName }}</div>
-      <button (click)="deleteEvent(event.eventId)">Delete</button>
+    <div class="header">
+      <h2 class="dashboard-title">Admin Dashboard</h2>
     </div>
   
-    <h3>Manage Bookings</h3>
-    <div *ngFor="let booking of bookings">
-      <div>BookingID:{{ booking.userId }}</div>
-      <div>EventID:{{ booking.eventId }}</div>
-      <div>UserID:{{booking.userId}}</div>
-      <button (click)="approveBooking(booking.bookingId)">Approve</button>
+    <div class="section manage-events">
+      <h3>Manage Events</h3>
+      <div *ngFor="let event of events" class="event-card">
+        <div class="event-name">{{ event.eventName }}</div>
+        <div>
+        <button class="btn btn-success">
+            <i class="fas fa-edit"></i> Edit
+          </button>
+        <button class="btn btn-danger" (click)="deleteEvent(event.eventId)">Delete</button>
+        </div>
+      </div>
+    </div>
+  
+    <div class="section manage-bookings">
+      <h3>Manage Bookings</h3>
+      <div *ngFor="let booking of bookings" class="booking-card">
+        <div class="booking-details">
+          <div><strong>BookingID:</strong> {{ booking.bookingId }}</div>
+          <div><strong>EventID:</strong> {{ booking.eventId }}</div>
+          <div><strong>UserID:</strong> {{ booking.userId }}</div>  
+        </div>
+        <button class="btn btn-success" (click)="approveBooking(booking.bookingId)">Approve</button>
+      </div>
     </div>
   </div>
   

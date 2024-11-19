@@ -19,16 +19,11 @@ export class HeaderComponent implements OnInit {
     { label: 'About', route: '/about' },
     { label: 'Profile', route: '/profile' },
     { label: 'Events', route: '/event-list' },
-    { label: 'AdminSign', route: '/admin/login' },
-    { label: 'Admin Dashboard', route: '/admin/dashboard' },
-    { label: 'Manage Events', route: '/admin/manage-events' },
-    { label: 'Approve Bookings', route: '/admin/approve-bookings' }
+    { label: 'AdminSign', route: '/admin/login' }
 
   ]
   adminLinks = [
-    { label: 'Admin Dashboard', route: '/admin-dashboard' },
-    { label: 'Manage Events', route: '/admin/manage-events' },
-    { label: 'Approve Bookings', route: '/admin/approve-bookings' }
+    { label: 'Admin Dashboard', route: '/admin/dashboard' }
   ];
   showResources = false;
   resources = [
@@ -44,17 +39,18 @@ export class HeaderComponent implements OnInit {
   isLoggedIn: boolean = false;  // Default login state
   isAdmin: boolean = false;  // Flag to determine if the user is an admin
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {
+   }
 
   ngOnInit(): void {
     // Subscribe to the login status observable
+    this.authService.isAdmin$.subscribe((status) => {
+      this.isAdmin = status;  // Update the login state
+    });
     this.authService.isLoggedIn$.subscribe((status) => {
       this.isLoggedIn = status;  // Update the login state
     });
     console.log(this.isLoggedIn);
-    // Check if the user has an admin role (you could check the role via JWT or a service)
-    const userRole = this.authService.getUserRole();  // Assumes you have a method that returns user role from the token
-    this.isAdmin = userRole === 'Admin';  // Set isAdmin flag if the user is an admin
   }
   navigateToResource(link: string): void {
     this.router.navigate([link]);

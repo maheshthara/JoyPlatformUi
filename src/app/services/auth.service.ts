@@ -50,7 +50,8 @@ export class AuthService {
         if (response && response.token) {
           localStorage.setItem('adminToken', response.token); // Save token to local storage
           console.log('Token stored:', localStorage.getItem('adminToken'));
-          this.isLoggedInSubject.next(true);
+          this.isAdminSubject.next(true);
+          this.isAdminLoggedIn();
         }
       })
     );
@@ -92,6 +93,9 @@ export class AuthService {
   }
   isAdminLoggedIn(): boolean {
     return localStorage.getItem('adminToken') !== null;
+  }
+  isUserLoggedIn(): boolean {
+    return localStorage.getItem('jwtToken') !== null;
   }
 
   logout(): void {

@@ -15,9 +15,9 @@
   </div>
 
   <ul class="nav-links">
-    <!-- Default links for everyone -->
+    <!-- Display header links based on the user's login state -->
     <ng-container *ngFor="let headerlink of headerLinks">
-      <li *ngIf="(headerlink.label === 'About' || headerlink.label === 'Profile' || headerlink.label === 'Events') ? isLoggedIn : !isLoggedIn || (headerlink.label !== 'Sign In' && headerlink.label !== 'Sign Up')">
+      <li *ngIf="(headerlink.label === 'Sign In' || headerlink.label === 'Sign Up' || headerlink.label === 'AdminSign') ? !isLoggedIn && !isAdmin : (headerlink.label === 'About' || headerlink.label === 'Profile' || headerlink.label === 'Events') ? isLoggedIn : !isLoggedIn">
         <a [routerLink]="headerlink.route">
           {{ headerlink.label }}
         </a>
@@ -25,7 +25,7 @@
     </ng-container>
 
     <!-- Admin specific links -->
-    <ng-container *ngIf="isLoggedIn && isAdmin">
+    <ng-container *ngIf="isAdmin">
       <li *ngFor="let adminLink of adminLinks">
         <a [routerLink]="adminLink.route">{{ adminLink.label }}</a>
       </li>
@@ -45,8 +45,8 @@
       </div>
     </nav>
 
-    <!-- Show Logout if user is logged in -->
-    <li *ngIf="isLoggedIn">
+    <!-- Show Logout if user or admin is logged in -->
+    <li *ngIf="isLoggedIn || isAdmin">
       <a (click)="logout()">Logout</a>
     </li>
   </ul>

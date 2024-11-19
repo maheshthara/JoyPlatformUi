@@ -26,13 +26,15 @@ export class AdminDashboardComponent implements OnInit{
   }
 
   getEvents() {
-    this.eventService.getEvents().subscribe((data) => {
+    this.bookingService.getEvents().subscribe((data) => {
       this.events = data;
+    }, (error)=>{
+      console.error('Error fecthing events',error)
     });
   }
 
   approveBooking(bookingId: number): void {
-    this.bookingService.approveBooking(bookingId).subscribe(() => {
+    this.bookingService.approveBooking(bookingId).subscribe((response) => {
       this.getBookings(); // Refresh bookings after approval
       this.toastr.success('Approved Succesful');
       this.getBookings();
@@ -41,6 +43,7 @@ export class AdminDashboardComponent implements OnInit{
   getBookings() {
     this.bookingService.getBookings().subscribe((data) => {
       this.bookings = data;
+      this.getEvents();
     },
     (error)=>{
       console.error('Error fecthing events',error)
@@ -59,6 +62,7 @@ export class AdminDashboardComponent implements OnInit{
 
   deleteEvent(eventId: number) {
     this.bookingService.deleteEvent(eventId).subscribe(() => {
+      this.toastr.success('Event Deleted Succesful')
       this.getEvents(); // Refresh events after deleting an event
     });
   }
