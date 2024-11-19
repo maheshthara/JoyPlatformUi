@@ -1,5 +1,5 @@
-export interface EventList{
-    eventId:number;
+export interface AddEvent{
+    eventId?:number;
     eventName:string;
     description:string;
     startDate:string;

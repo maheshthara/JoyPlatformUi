@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable } from 'rxjs';
 import { EventList } from '../models/Events';
 import { Bookings } from '../models/Booking';
+import { AddEvent } from '../models/addEvent';
 
 @Injectable({
   providedIn: 'root'
@@ -65,7 +66,7 @@ export class BookingService {
       })
     );
   }
-  addEvent(eventData: EventList): Observable<EventList> {
+  addEvent(eventData: AddEvent): Observable<AddEvent> {
     const token = localStorage.getItem('adminToken'); // Retrieve token from localStorage
     if (!token) {
       throw new Error('User is not authorized. No token found.');
@@ -75,7 +76,7 @@ export class BookingService {
       'Authorization': `Bearer ${token}`,
     });
 
-    return this.http.post<EventList>(`${this.apiUrl}/createEvent`, { headers }).pipe(
+    return this.http.post<AddEvent>(`${this.apiUrl}/createEvent`,eventData, { headers }).pipe(
       catchError((error) => {
         console.error('Error booking event:', error);
         throw error;
@@ -94,6 +95,23 @@ export class BookingService {
     });
 
     return this.http.delete<EventList>(`${this.apiUrl}/deleteEvent/${eventId}`, { headers }).pipe(
+      catchError((error) => {
+        console.error('Error booking event:', error);
+        throw error;
+      })
+    );
+  }
+  updateEvent(eventId: number,updatedEvent:EventList): Observable<EventList> {
+    const token = localStorage.getItem('adminToken'); // Retrieve token from localStorage
+    if (!token) {
+      throw new Error('User is not authorized. No token found.');
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+    });
+
+    return this.http.delete<EventList>(`${this.apiUrl}/updateEvent/${eventId}`, { headers }).pipe(
       catchError((error) => {
         console.error('Error booking event:', error);
         throw error;
