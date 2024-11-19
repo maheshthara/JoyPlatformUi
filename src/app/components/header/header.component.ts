@@ -19,7 +19,9 @@ export class HeaderComponent implements OnInit {
     { label: 'About', route: '/about' },
     { label: 'Profile', route: '/profile' },
     { label: 'Events', route: '/event-list' },
-    { label: 'AdminSign', route: '/admin/login' }
+    { label: 'AdminSign', route: '/admin/login' },
+    {label:'How to join',route:'/join'},
+    {label:'Contact',route:'/contact'}
 
   ]
   adminLinks = [

@@ -10,6 +10,7 @@ import { BookingConfirmationComponent } from './components/booking-confirmation/
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { AddEventComponent } from './components/add-event/add-event.component';
+import { JoinComponent } from './components/join/join.component';
 
 export const routes: Routes = [
     {
@@ -46,5 +47,8 @@ export const routes: Routes = [
     {
         path:'addEvent',component:AddEventComponent
     },
+    {
+        path:'join',component:JoinComponent
+    }
     
 ];
