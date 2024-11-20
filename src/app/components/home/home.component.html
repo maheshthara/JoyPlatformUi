@@ -1,48 +1,108 @@
 <div class="home-container">
   <!-- Welcome Section -->
   <div class="welcome-section gradient-background">
-      <h1>Welcome to Newham</h1>
-      <p>Your space for mental well-being and mindfulness</p>
-      <button class="btn-start">Start Your Journey</button>
+    <h1>Welcome to Newham</h1>
+    <p>Your space for mental well-being and mindfulness</p>
+    <button class="btn-start" (click)="register()">Start Your Journey</button>
   </div>
 
   <!-- Quick Access Section -->
   <div class="quick-access">
-      <h2>Explore</h2>
-      <div class="access-links">
-          <a routerLink="/mood-tracker" class="card card-hover">
-              <h3>Mood Tracker</h3>
-              <p>Track your daily mood and see your emotional trends.</p>
-          </a>
-          <a routerLink="/mindfulness-exercises" class="card card-hover">
-              <h3>Mindfulness Exercises</h3>
-              <p>Discover meditation and breathing exercises to relax.</p>
-          </a>
-          <a routerLink="/resource-library" class="card card-hover">
-              <h3>Resource Library</h3>
-              <p>Read articles and find resources for mental well-being.</p>
-          </a>
-      </div>
+    <h2>Explore</h2>
+    <div class="access-links">
+      <a routerLink="/mood-tracker" class="card card-hover">
+        <div class="card-image">
+          <img src="your-image-url-1.jpg" alt="Mood Tracker">
+        </div>
+        <h3>Mood Tracker</h3>
+        <p>Track your daily mood and see your emotional trends.</p>
+      </a>
+      <a routerLink="/mindfulness-exercises" class="card card-hover">
+        <div class="card-image">
+          <img src="your-image-url-2.jpg" alt="Mindfulness Exercises">
+        </div>
+        <h3>Mindfulness Exercises</h3>
+        <p>Discover meditation and breathing exercises to relax.</p>
+      </a>
+      <a routerLink="/resource-library" class="card card-hover">
+        <div class="card-image">
+          <img src="your-image-url-3.jpg" alt="Resource Library">
+        </div>
+        <h3>Resource Library</h3>
+        <p>Read articles and find resources for mental well-being.</p>
+      </a>
+    </div>
   </div>
 
   <!-- Events Section -->
   <div class="events-section">
-      <h2>Upcoming Events</h2>
-      <div class="event-card">
-          <h3>Mindfulness Meditation Session</h3>
-          <p>Join us for a guided meditation session aimed at reducing stress and boosting mindfulness. <strong>Duration: 45 min</strong></p>
-          <button class="btn-register">Register Now</button>
-      </div>
-      <div class="event-card">
-          <h3>Wellness Webinar</h3>
-          <p>Learn about practical techniques for maintaining mental wellness in our fast-paced world. <strong>Duration: 1 hour</strong></p>
-          <button class="btn-register">Register Now</button>
-      </div>
+    <h2>Upcoming Events</h2>
+    <div class="event-card">
+      <h3>Mindfulness Meditation Session</h3>
+      <p>Join us for a guided meditation session aimed at reducing stress and boosting mindfulness. <strong>Duration: 45 min</strong></p>
+      <button class="btn-register" (click)="register()">Register Now</button>
+    </div>
+    <div class="event-card">
+      <h3>Wellness Webinar</h3>
+      <p>Learn about practical techniques for maintaining mental wellness in our fast-paced world. <strong>Duration: 1 hour</strong></p>
+      <button class="btn-register" (click)="register()">Register Now</button>
+    </div>
   </div>
 
   <!-- Daily Quote Section -->
   <div class="daily-quote">
-      <h2>Daily Quote</h2>
-      <p>“Your present circumstances don't determine where you can go; they merely determine where you start.”</p>
+    <h2>Daily Quote</h2>
+    <p>“Your present circumstances don't determine where you can go; they merely determine where you start.”</p>
+  </div>
+
+  <!-- Additional Information Sections -->
+  <div class="additional-info">
+    <div class="info-item">
+      <div class="info-image">
+        <img src="your-image-url-4.jpg" alt="Mental Health Tips">
+      </div>
+      <h3>Mental Health Tips</h3>
+      <p>Learn everyday tips to improve your mental well-being and lead a healthier life.</p>
+    </div>
+
+    <div class="info-item">
+      <div class="info-image">
+        <img src="your-image-url-5.jpg" alt="Community Support">
+      </div>
+      <h3>Community Support</h3>
+      <p>Find and connect with a supportive community to share experiences and advice.</p>
+    </div>
+
+    <div class="info-item">
+      <div class="info-image">
+        <img src="your-image-url-6.jpg" alt="Professional Counseling">
+      </div>
+      <h3>Professional Counseling</h3>
+      <p>Get access to certified professionals who can help with personalized guidance.</p>
+    </div>
+
+    <div class="info-item">
+      <div class="info-image">
+        <img src="your-image-url-7.jpg" alt="Self-Care Practices">
+      </div>
+      <h3>Self-Care Practices</h3>
+      <p>Explore a variety of activities that help with mental relaxation and self-care.</p>
+    </div>
+
+    <div class="info-item">
+      <div class="info-image">
+        <img src="your-image-url-8.jpg" alt="Online Workshops">
+      </div>
+      <h3>Online Workshops</h3>
+      <p>Join our interactive online workshops that focus on mental well-being and growth.</p>
+    </div>
+
+    <div class="info-item">
+      <div class="info-image">
+      <img [src]="imageUrl" alt="newham-image">
+      </div>
+      <h3>Personal Growth Resources</h3>
+      <p>Access articles, videos, and tools to support your personal growth journey.</p>
+    </div>
   </div>
 </div>

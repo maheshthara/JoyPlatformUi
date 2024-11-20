@@ -1,81 +1,125 @@
 <div class="dashboard-container">
+  <!-- Header Section -->
   <div class="header">
-    <h2 class="dashboard-title">Admin Dashboard</h2>
-    <button class="btn btn-success" (click)="openModal()">Add Event</button>
+      <h2 class="dashboard-title">Admin Dashboard</h2>
+      <button class="btn btn-success" (click)="openModal()">Add Event</button>
   </div>
 
+  <!-- Search Section -->
+  <div class="search-container">
+      <input 
+          type="text" 
+          [(ngModel)]="searchTerm" 
+          (input)="onSearch()" 
+          placeholder="Search events..." 
+          class="search-input"
+      />
+  </div>
+
+  <!-- Manage Events Section -->
   <div class="section manage-events">
-    <h3>Manage Events</h3>
-    <div *ngFor="let event of events" class="event-card">
-      <div class="event-name">{{ event.eventName }}</div>
-      <div>
-        <button class="btn btn-success" (click)="openModal(event)">
-          <i class="fas fa-edit"></i>
-        </button>
-        <button class="btn btn-danger" (click)="deleteEvent(event.eventId)">
-          <i class="fas fa-trash-alt"></i>
-        </button>
+      <h3>Manage Events</h3>
+      <diV *ngIf="pagedEvents.length==0">
+        <h5>No Events..</h5>
+      </diV>
+      <div *ngFor="let event of pagedEvents" class="event-card">
+          <div class="event-name">{{ event.eventName }}</div>
+          <div>
+              <button class="btn btn-success" (click)="openModal(event)">
+                  <i class="fas fa-edit"></i>
+              </button>
+              <button class="btn btn-danger" (click)="deleteEvent(event.eventId)">
+                  <i class="fas fa-trash-alt"></i>
+              </button>
+          </div>
       </div>
-    </div>
+  </div>
+
+  <!-- Pagination Controls -->
+  <div class="pagination-controls">
+      <button 
+          (click)="changePage(currentPage - 1)" 
+          [disabled]="currentPage <= 1" 
+          class="btn btn-secondary"
+      >
+          Previous
+      </button>
+      <span>Page {{ currentPage }} of {{ totalPages }}</span>
+      <button 
+          (click)="changePage(currentPage + 1)" 
+          [disabled]="currentPage >= totalPages" 
+          class="btn btn-secondary"
+      >
+          Next
+      </button>
   </div>
 
   <!-- Add/Edit Event Modal -->
   <div *ngIf="currentEvent || !createEvent" class="modal">
-    <div class="modal-content">
-      <h3>{{ isEditMode ? 'Edit Event' : 'Add New Event' }}</h3>
-      <form (ngSubmit)="isEditMode ? editEvent(currentEvent!) : addEvent()">
-        <div *ngIf="isEditMode">
-          <label for="eventName">Event Name</label>
-          <input id="eventName" [(ngModel)]="currentEvent!.eventName" name="eventName" required />
-        </div>
-        <div *ngIf="!isEditMode">
-          <label for="eventName">Event Name</label>
-          <input id="eventName" [(ngModel)]="newEvent.eventName" name="eventName" required />
-        </div>
-        <div *ngIf="isEditMode">
-          <label for="description">Description</label>
-          <textarea id="description" [(ngModel)]="currentEvent!.description" name="description" required></textarea>
-        </div>
-        <div *ngIf="!isEditMode">
-          <label for="description">Description</label>
-          <textarea id="description" [(ngModel)]="newEvent.description" name="description" required></textarea>
-        </div>
-        <div *ngIf="isEditMode">
-          <label for="date">Event Date</label>
-          <input type="date" id="date" [(ngModel)]="currentEvent!.startDate" name="date" required />
-        </div>
-        <div *ngIf="!isEditMode">
-          <label for="date">Event Date</label>
-          <input type="date" id="date" [(ngModel)]="newEvent.startDate" name="date" required />
-        </div>
-        <div *ngIf="isEditMode">
-          <label for="location">Location</label>
-          <input id="location" [(ngModel)]="currentEvent!.location" name="location" required />
-        </div>
-        <div *ngIf="!isEditMode">
-          <label for="location">Location</label>
-          <input id="location" [(ngModel)]="newEvent.location" name="location" required />
-        </div>
-        <button type="submit" class="btn btn-success">
-          {{ isEditMode ? 'Update Event' : 'Add Event' }}
-        </button>
-        <button type="button" class="btn btn-danger" (click)="closeModal()">Cancel</button>
-      </form>
-    </div>
+      <div class="modal-content">
+          <h3>{{ isEditMode ? 'Edit Event' : 'Add New Event' }}</h3>
+          <form (ngSubmit)="isEditMode ? editEvent(currentEvent!) : addEvent()">
+              <!-- Event Name -->
+              <div *ngIf="isEditMode">
+                  <label for="eventName">Event Name</label>
+                  <input id="eventName" [(ngModel)]="currentEvent!.eventName" name="eventName" required />
+              </div>
+              <div *ngIf="!isEditMode">
+                  <label for="eventName">Event Name</label>
+                  <input id="eventName" [(ngModel)]="newEvent.eventName" name="eventName" required />
+              </div>
+              <!-- Description -->
+              <div *ngIf="isEditMode">
+                  <label for="description">Description</label>
+                  <textarea id="description" [(ngModel)]="currentEvent!.description" name="description" required></textarea>
+              </div>
+              <div *ngIf="!isEditMode">
+                  <label for="description">Description</label>
+                  <textarea id="description" [(ngModel)]="newEvent.description" name="description" required></textarea>
+              </div>
+              <!-- Event Date -->
+              <div *ngIf="isEditMode">
+                  <label for="date">Event Date</label>
+                  <input type="date" id="date" [(ngModel)]="currentEvent!.startDate" name="date" required />
+              </div>
+              <div *ngIf="!isEditMode">
+                  <label for="date">Event Date</label>
+                  <input type="date" id="date" [(ngModel)]="newEvent.startDate" name="date" required />
+              </div>
+              <!-- Location -->
+              <div *ngIf="isEditMode">
+                  <label for="location">Location</label>
+                  <input id="location" [(ngModel)]="currentEvent!.location" name="location" required />
+              </div>
+              <div *ngIf="!isEditMode">
+                  <label for="location">Location</label>
+                  <input id="location" [(ngModel)]="newEvent.location" name="location" required />
+              </div>
+              <!-- Submit Buttons -->
+              <button type="submit" class="btn btn-success">
+                  {{ isEditMode ? 'Update Event' : 'Add Event' }}
+              </button>
+              <button type="button" class="btn btn-danger" (click)="closeModal()">Cancel</button>
+          </form>
+      </div>
   </div>
 
+  <!-- Manage Bookings Section -->
   <div class="section manage-bookings">
-    <h3>Manage Bookings</h3>
-    <div *ngFor="let booking of bookings" class="booking-card">
-      <div class="booking-details">
-        <div><strong>BookingID:</strong> {{ booking.bookingId }}</div>
-        <div><strong>EventID:</strong> {{ booking.eventId }}</div>
-        <div><strong>UserID:</strong> {{ booking.userId }}</div>
+      <h1>Manage Bookings</h1>
+      <diV  *ngIf="bookings.length==0">
+           <h3 style="color: red;">No Bookings</h3>
+      </diV>
+      <div *ngFor="let booking of bookings" class="booking-card">
+          <div class="booking-details">
+              <div><strong>BookingID:</strong> {{ booking.bookingId }}</div>
+              <div><strong>EventID:</strong> {{ booking.eventId }}</div>
+              <div><strong>UserID:</strong> {{ booking.userId }}</div>
+          </div>
+          <div class="button-group">
+              <button class="btn btn-success" (click)="approveBooking(booking.bookingId)">Approve</button>
+              <button class="btn btn-danger" (click)="declineBooking(booking.bookingId)">Decline</button>
+          </div>
       </div>
-      <div class="button-group">
-        <button class="btn btn-success" (click)="approveBooking(booking.bookingId)">Approve</button>
-        <button class="btn btn-danger" (click)="declineBooking(booking.bookingId)">Decline</button>
-      </div>
-    </div>
   </div>
 </div>

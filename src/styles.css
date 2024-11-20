@@ -34,4 +34,14 @@ body {
   .toast-error {
     background-color: #dc3545 !important; /* Error color */
   }
+  @media (max-width: 600px) {
+    .role-selector {
+      flex-direction: column;
+    }
+  
+    .role-selector button {
+      margin-bottom: 10px;
+    }
+  }
+  
   

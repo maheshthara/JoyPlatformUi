@@ -19,14 +19,15 @@ export class AdminDashboardComponent implements OnInit{
 
   events: EventList[] = [];
   bookings: Bookings[] = [];
-  currentEvent: EventList | null = null; // Store the current event for editing
-  isEditMode: boolean = false; // Flag to check if in edit mode
-  newEvent:AddEvent={
-    eventName:'',
-    description:'',
-    startDate:new Date().toString(),
-    location:''
-  }
+  currentEvent: EventList | null = null;
+  isEditMode: boolean = false;
+  newEvent: AddEvent = { eventName: '', description: '', startDate: new Date().toString(), location: '' };
+  searchTerm: string = '';
+  totalPages: number = 1;
+  currentPage: number = 1;
+  eventsPerPage: number = 5;
+  filteredEvents: EventList[] = [];
+  pagedEvents: EventList[] = [];
   createEvent:AddEvent[]=[];
 
   constructor(private eventService: EventService,private bookingService:BookingService,private toastr:ToastrService) {}
@@ -40,9 +41,51 @@ export class AdminDashboardComponent implements OnInit{
   getEvents():void{
     this.bookingService.getEvents().subscribe((data) => {
       this.events = data;
-    }, (error)=>{
-      console.error('Error fecthing events',error)
-    });
+      this.filteredEvents = this.events;
+      this.totalPages = Math.ceil(this.filteredEvents.length / this.eventsPerPage);
+      this.updatePagedEvents();
+    },
+    (error) => {
+      console.error('Error fetching events', error);
+    }
+  );
+  }
+// Filter events based on search term
+filterEvents(): void {
+  this.filteredEvents = this.events.filter(event =>
+    event.eventName.toLowerCase().includes(this.searchTerm.toLowerCase())
+  );
+  this.totalPages = Math.ceil(this.filteredEvents.length / this.eventsPerPage);
+  this.currentPage = 1;
+  this.updatePagedEvents();
+}
+// Update events to be displayed based on the current page
+updatePagedEvents(): void {
+  const startIndex = (this.currentPage - 1) * this.eventsPerPage;
+  const endIndex = startIndex + this.eventsPerPage;
+  this.pagedEvents = this.filteredEvents.slice(startIndex, endIndex);
+}
+// Change page and update events
+changePage(page: number): void {
+  if (page > 0 && page <= this.totalPages) {
+    this.currentPage = page;
+    this.updatePagedEvents();
+  }
+}
+
+  // Handle search functionality
+  onSearch(): void {
+    if (this.searchTerm.trim()) {
+      this.filteredEvents = this.events.filter(event =>
+        event.eventName.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        event.description.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    } else {
+      this.filteredEvents = [...this.events];
+    }
+    this.totalPages = Math.ceil(this.filteredEvents.length / this.eventsPerPage);
+    this.currentPage = 1; // Reset to the first page after search
+    this.updatePagedEvents();
   }
 
   approveBooking(bookingId: number) {

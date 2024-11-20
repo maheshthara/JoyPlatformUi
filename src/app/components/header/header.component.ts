@@ -15,11 +15,11 @@ export class HeaderComponent implements OnInit {
   headerLinks = [
     { label: 'Home', route: '/' },
     { label: 'Sign Up', route: '/signup' },
-    { label: 'Sign In', route: '/signin' },
+    { label: 'Sign In', route: '/login' },
     { label: 'About', route: '/about' },
     { label: 'Profile', route: '/profile' },
     { label: 'Events', route: '/event-list' },
-    { label: 'AdminSign', route: '/admin/login' },
+    // { label: 'AdminSign', route: '/admin/login' },
     {label:'How to join',route:'/join'},
     {label:'Contact',route:'/contact'}
 
@@ -56,7 +56,7 @@ export class HeaderComponent implements OnInit {
   }
   logout(): void {
     this.authService.logout();  // Call logout from AuthService
-    this.router.navigate(['/signin']); // Redirect to sign-in page
+    this.router.navigate(['/login']); // Redirect to sign-in page
   }
 }
 

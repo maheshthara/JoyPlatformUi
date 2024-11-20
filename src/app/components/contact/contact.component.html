@@ -1,5 +1,5 @@
 <div class="contact-container">
-    <h1>Contact Joy</h1>
+    <h1>Contact Newham</h1>
     <section class="contact-info">
         <h2>We’d Love to Hear From You</h2>
         <p>If you have any questions, feedback, or need assistance, please reach out. Our team is here to support you!</p>
@@ -28,24 +28,38 @@
     </section>
 
     <section class="contact-form">
-        <h2>Get In Touch</h2>
-        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" formControlName="name" placeholder="Your full name" class="form-control" />
+        <div class="form-container">
+            <div class="form-header">
+                <h1>Elevate Your Care Offering with Joy.</h1>
+                <p>Get in touch with us now.</p>
+                <p class="info-text">
+                    <i class="fas fa-info-circle"></i>
+                    If you are a local service hoping to find out more information about Joy please contact 
+                    <a href="mailto:support@thejoyapp.com">supportthenewhamapp.com</a>
+                </p>
             </div>
-
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" formControlName="email" placeholder="Your email address" class="form-control" />
+    
+            <div class="form-content">
+                <h2>Connect with our Expert Team for a personalised consultation:</h2>
+                <form>
+                    <div class="form-group">
+                        <input type="text" placeholder="First name" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Last name" />
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email" />
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Phone" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Organisation name" />
+                    </div>
+                    <button type="submit" class="btn-submit">Submit</button>
+                </form>
             </div>
-
-            <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" formControlName="message" placeholder="Your message" class="form-control"></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">Send Message</button>
-        </form>
+        </div>
     </section>
-</div>
+    
