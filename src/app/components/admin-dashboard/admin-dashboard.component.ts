@@ -113,6 +113,11 @@ export class AdminDashboardComponent implements OnInit{
     if (event) {
       this.isEditMode = true;
       this.currentEvent = { ...event }; // Pre-fill form for editing
+      // Ensure the startDate is formatted as YYYY-MM-DD for the input[type="date"]
+    if (this.currentEvent.startDate) {
+      const date = new Date(this.currentEvent.startDate);
+      this.currentEvent.startDate = date.toISOString().split('T')[0]; // Format the date to YYYY-MM-DD
+    }
     } else {
       this.isEditMode = false;
       this.currentEvent = {eventId:0, eventName: '', description: '', startDate: '',location:'' }; // Set blank values for adding
