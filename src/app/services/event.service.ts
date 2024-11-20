@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable } from 'rxjs';
 import { EventList } from '../models/Events';
+import { Bookings } from '../models/Booking';
 @Injectable({
   providedIn: 'root'
 })
@@ -54,6 +55,23 @@ export class EventService {
     });
 
     return this.http.get<EventList>(`${this.apiUrl}/${eventId}`, { headers }).pipe(
+      catchError((error) => {
+        console.error('Error fetching Event:', error);
+        throw error;
+      })
+    );
+  }
+  getUserBookings():Observable<Bookings>{
+    const token = localStorage.getItem('jwtToken'); // Retrieve token from localStorage
+    if (!token) {
+      throw new Error('User is not authorized. No token found.');
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+    });
+
+    return this.http.get<Bookings>(`${this.apiUrl}/myBookings`, { headers }).pipe(
       catchError((error) => {
         console.error('Error fetching Event:', error);
         throw error;

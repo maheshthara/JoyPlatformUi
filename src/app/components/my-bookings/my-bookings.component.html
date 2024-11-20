@@ -1,0 +1,16 @@
+<!-- my-bookings.component.html -->
+<div class="my-bookings">
+    <h2>Your Bookings</h2>
+    <div *ngIf="bookings.length === 0">You have no bookings yet.</div>
+    <div *ngFor="let booking of bookings" class="booking-card">
+      <h3>EventID:{{ booking.eventId }}</h3>
+      <h3>BookingID:{{ booking.bookingId }}</h3>
+      <p>Booking Date: {{ booking.bookingDate | date }}</p>
+      <p>Status: 
+        <span [ngClass]="{   'approved': booking.isApproved === true,    'declined': booking.isApproved === false }">
+          {{ booking.isApproved ? 'Approved' : 'Pending' }}
+        </span>
+      </p>
+    </div>
+  </div>
+  

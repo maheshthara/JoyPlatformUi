@@ -1,0 +1,39 @@
+/* my-bookings.component.css */
+.my-bookings {
+    padding: 20px;
+    background-color: #f4f4f9;
+    border-radius: 10px;
+  }
+  
+  .booking-card {
+    background-color: white;
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  h3 {
+    font-size: 20px;
+    color: #333;
+  }
+  
+  p {
+    font-size: 16px;
+  }
+  
+  .approved {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .declined {
+    color: red;
+    font-weight: bold;
+  }
+  

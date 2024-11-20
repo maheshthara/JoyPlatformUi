@@ -29,13 +29,10 @@ export class HeaderComponent implements OnInit {
   ];
   showResources = false;
   resources = [
-    { label: 'Health Tips', link: '/resources/health-tips' },
+    { label: 'MyBookings', link: '/my-bookings' },
     { label: 'Nutrition Plans', link: '/resources/nutrition-plans' },
     { label: 'Exercise Guides', link: '/resources/exercise-guides' },
-    { label: 'Mental Wellness Articles', link: '/resources/mental-wellness' },
-    { label: 'Community Forums', link: '/resources/community-forums' },
-    { label: 'Educational Videos', link: '/resources/educational-videos' },
-    { label: 'Professional Directory', link: '/resources/professionals' },
+    { label: 'Mental Wellness Articles', link: '/resources/mental-wellness' }
   ];
 
   isLoggedIn: boolean = false;  // Default login state

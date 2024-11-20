@@ -14,7 +14,7 @@
 
   <ul class="nav-links">
     <ng-container *ngFor="let headerlink of headerLinks">
-      <li *ngIf="(headerlink.label === 'Sign In' || headerlink.label === 'Sign Up' || headerlink.label === 'AdminSign') ? !isLoggedIn && !isAdmin : (headerlink.label === 'About' || headerlink.label === 'Profile' || headerlink.label === 'Events' || headerlink.label === 'Home') ? isLoggedIn : !isAdmin">
+      <li *ngIf="(headerlink.label === 'Sign In' || headerlink.label === 'Sign Up' || headerlink.label === 'AdminSign' || headerlink.label==='How to join') ? !isLoggedIn && !isAdmin : (headerlink.label === 'About' || headerlink.label === 'Profile' || headerlink.label === 'Events' || headerlink.label === 'Home') ? isLoggedIn : !isAdmin">
         <a [routerLink]="headerlink.route">{{ headerlink.label }}</a>
       </li>
     </ng-container>
@@ -25,7 +25,7 @@
       </li>
     </ng-container>
 
-    <li class="resources-item" (mouseover)="showResources = true" (mouseleave)="showResources = false">
+    <li class="resources-item" (mouseover)="showResources = true" (mouseleave)="showResources = false" *ngIf="isLoggedIn">
       <div class="resources-title">
         Resources <span class="down-arrow">&#9662;</span>
       </div>

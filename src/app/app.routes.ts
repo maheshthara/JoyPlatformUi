@@ -11,6 +11,7 @@ import { AdminLoginComponent } from './components/admin-login/admin-login.compon
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { AddEventComponent } from './components/add-event/add-event.component';
 import { JoinComponent } from './components/join/join.component';
+import { MyBookingsComponent } from './components/my-bookings/my-bookings.component';
 
 export const routes: Routes = [
     {
@@ -49,6 +50,7 @@ export const routes: Routes = [
     },
     {
         path:'join',component:JoinComponent
-    }
+    },
+    {path:'my-bookings',component:MyBookingsComponent}
     
 ];
