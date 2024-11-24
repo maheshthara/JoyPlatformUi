@@ -68,6 +68,15 @@
                   <label for="eventName">Event Name</label>
                   <input id="eventName" [(ngModel)]="newEvent.eventName" name="eventName" required />
               </div>
+              <!--Category-->
+              <div *ngIf="!isEditMode">
+                <label for="eventCategory">Event Category</label>
+                <input id="eventCategory" [(ngModel)]="newEvent.category" name="eventName" required />
+            </div>
+            <div *ngIf="isEditMode">
+                <label for="category">Category</label>
+                <textarea id="Category" [(ngModel)]="currentEvent!.category" name="description" required></textarea>
+            </div>
               <!-- Description -->
               <div *ngIf="isEditMode">
                   <label for="description">Description</label>

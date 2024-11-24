@@ -13,6 +13,9 @@ import { EventList } from '../../models/Events';
 })
 export class EventListComponent implements OnInit {
   events:EventList[]=[];
+  filteredEvents: EventList[] = []; // Events filtered by category
+  categories: string[] = []; // Unique categories
+  locations:string[]=[];
 
   constructor(private eventService:EventService,private router:Router){}
 
@@ -27,11 +30,38 @@ bookEvent(eventId:number){
 loadEvents(){
   this.eventService.getEvents().subscribe((data)=>{
     this.events = data;
+    this.filteredEvents = data; // Initialize filtered events with all events
+     // Extract unique categories
+     this.categories = [...new Set(data.map((event) => event.category))];
+     this.locations = [...new Set(data.map((event) => event.location))];
+
   },
   (error)=>{
     console.error('Error fecthing events',error)
   });
+  
 }
 
-  
+filterByCategory(event: Event) {
+  const selectedCategory = (event.target as HTMLSelectElement).value;
+
+  if (selectedCategory) {
+    this.filteredEvents = this.events.filter(
+      (e) => e.category === selectedCategory
+    );
+  } else {
+    this.filteredEvents = this.events; // Show all events if no category is selected
+  }
+}
+filterByLocation(event: Event) {
+  const selectedLocation = (event.target as HTMLSelectElement).value;
+
+  if (selectedLocation) {
+    this.filteredEvents = this.events.filter(
+      (e) => e.location === selectedLocation
+    );
+  } else {
+    this.filteredEvents = this.events; // Show all events if no category is selected
+  }
+}
 }

@@ -4,6 +4,8 @@
     <p><strong>Event:</strong> {{ event.eventName }}</p>
     <p><strong>Date:</strong> {{ event.startDate | date: 'fullDate' }}</p>
     <p><strong>Description:</strong> {{ event.description }}</p>
+    <p><strong>Category:</strong> {{ event.category }}</p>
+
   </div>
   <button class="btn btn-gradient mt-3" (click)="confirmationBooking()">Confirm Booking</button>
 

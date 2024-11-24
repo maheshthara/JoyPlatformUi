@@ -4,4 +4,5 @@ export interface EventList{
     description:string;
     startDate:string;
     location:string;
+    category:string;
 }

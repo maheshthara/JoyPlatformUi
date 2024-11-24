@@ -1,13 +1,33 @@
 <div class="container mt-4">
   <h2 class="mb-4 text-center">Available Events</h2>
+
+  <!-- Filter Section -->
+  <div class="row mb-4">
+    <div class="col-md-6 mx-auto">
+      <label for="categoryFilter" class="form-label text-secondary"><strong>Filter by Category:</strong></label>
+      <select id="categoryFilter" class="form-select shadow-sm" (change)="filterByCategory($event)">
+        <option value="">All Categories</option>
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+    </div>
+    <div class="col-md-6 mx-auto">
+      <label for="categoryFilter" class="form-label text-secondary"><strong>Filter by Location:</strong></label>
+      <select id="categoryFilter" class="form-select shadow-sm" (change)="filterByLocation($event)">
+        <option value="">All Locations</option>
+        <option *ngFor="let location of locations" [value]="location">{{ location }}</option>
+      </select>
+    </div>
+
+  <!-- Events Section -->
   <div class="row">
-    <div class="col-md-4 mb-4" *ngFor="let event of events">
+    <div class="col-md-4 mb-4" *ngFor="let event of filteredEvents">
       <div class="card event-card h-100 shadow-sm">
         <div class="card-body">
           <h5 class="card-title text-primary">{{ event.eventName }}</h5>
           <p class="card-text text-muted"><strong>Date:</strong> {{ event.startDate | date: 'fullDate' }}</p>
           <p class="card-text"><strong>Location:</strong> {{ event.location }}</p>
           <p class="card-text"><strong>Description:</strong> {{ event.description }}</p>
+          <p class="card-text"><strong>Category:</strong> {{ event.category }}</p>
           <button class="btn btn-gradient mt-2" (click)="bookEvent(event.eventId)">Book Now</button>
         </div>
       </div>

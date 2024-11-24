@@ -4,4 +4,5 @@ export interface AddEvent{
     description:string;
     startDate:string;
     location:string;
+    category:string;
 }

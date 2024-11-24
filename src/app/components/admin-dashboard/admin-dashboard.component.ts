@@ -21,7 +21,7 @@ export class AdminDashboardComponent implements OnInit{
   bookings: Bookings[] = [];
   currentEvent: EventList | null = null;
   isEditMode: boolean = false;
-  newEvent: AddEvent = { eventName: '', description: '', startDate: new Date().toString(), location: '' };
+  newEvent: AddEvent = { eventName: '', description: '', startDate: new Date().toString(), location: '',category:'' };
   searchTerm: string = '';
   totalPages: number = 1;
   currentPage: number = 1;
@@ -163,7 +163,7 @@ changePage(page: number): void {
     }
     } else {
       this.isEditMode = false;
-      this.currentEvent = {eventId:0, eventName: '', description: '', startDate: '',location:'' }; // Set blank values for adding
+      this.currentEvent = {eventId:0, eventName: '', description: '', startDate: '',location:'',category:'' }; // Set blank values for adding
     }
     // Open modal logic (use a library like Bootstrap or custom modal)
   }
