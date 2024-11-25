@@ -1,40 +1,86 @@
-.event-card {
-  transition: transform 0.2s ease-in-out;
-  margin-top: 50px;
+.calendar-container {
+  display: block; /* Ensures the calendar is always visible */
+  transition: height 0.3s ease-in-out;
 }
 
-.event-card:hover {
-  transform: scale(1.03);
+/* General Styling */
+.container {
+  max-width: 1200px;
 }
 
-.form-select {
-  border-radius: 10px;
+h2 {
+  font-weight: bold;
+  color: #2575fc;
+}
+
+h5 {
+  font-weight: bold;
+}
+
+/* Filters */
+.form-select,
+.form-control {
+  border-radius: 8px;
   border: 1px solid #ddd;
-  padding: 8px 12px;
+  padding: 10px 15px;
 }
 
+label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #444;
+}
+
+/* Cards */
+.card {
+  border-radius: 10px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+  height: 30%;
+  width: 30%;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Buttons */
 .btn-gradient {
   background: linear-gradient(45deg, #6a11cb, #2575fc);
   color: white;
+  font-weight: bold;
   border: none;
   border-radius: 5px;
+  padding: 10px;
 }
 
 .btn-gradient:hover {
   background: linear-gradient(45deg, #2575fc, #6a11cb);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
-.event-card {
-  border: 1px solid #ddd;
-  padding: 15px;
-  margin: 10px;
+
+.btn-outline-primary {
+  font-weight: bold;
   border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-.event-image {
-  width: 100%;
-  max-width: 300px;
-  height: auto;
-  border-radius: 5px;
-  margin-bottom: 10px;
+
+.btn-outline-primary:hover {
+  background-color: #2575fc;
+  color: white;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .row-cols-md-2 {
+    row-gap: 1.5rem;
+  }
+
+  .card-img-top {
+    height: 150px;
+  }
 }

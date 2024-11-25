@@ -113,4 +113,9 @@ export class EventListComponent implements OnInit {
   viewEvent(eventId: number) {
     this.router.navigate(['/view-event', eventId]);
   }
+  isCalendarOpen: boolean = true; // Calendar is open by default
+
+toggleCalendar() {
+  this.isCalendarOpen = !this.isCalendarOpen;
+}
 }
