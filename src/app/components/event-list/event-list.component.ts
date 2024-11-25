@@ -9,59 +9,83 @@ import { EventList } from '../../models/Events';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './event-list.component.html',
-  styleUrl: './event-list.component.css'
+  styleUrls: ['./event-list.component.css']
 })
 export class EventListComponent implements OnInit {
-  events:EventList[]=[];
-  filteredEvents: EventList[] = []; // Events filtered by category
-  categories: string[] = []; // Unique categories
-  locations:string[]=[];
+  events: EventList[] = [];
+  filteredEvents: EventList[] = [];
+  nextEvents: EventList[] = []; // User's registered events
+  categories: string[] = [];
+  locations: string[] = [];
 
-  constructor(private eventService:EventService,private router:Router){}
+  constructor(
+    private eventService: EventService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-  this.loadEvents();
+    this.loadEvents();
   }
 
-bookEvent(eventId:number){
-  this.router.navigate(['/book-event',eventId])
-}
-
-loadEvents(){
-  this.eventService.getEvents().subscribe((data)=>{
-    this.events = data;
-    this.filteredEvents = data; // Initialize filtered events with all events
-     // Extract unique categories
-     this.categories = [...new Set(data.map((event) => event.category))];
-     this.locations = [...new Set(data.map((event) => event.location))];
-
-  },
-  (error)=>{
-    console.error('Error fecthing events',error)
-  });
-  
-}
-
-filterByCategory(event: Event) {
-  const selectedCategory = (event.target as HTMLSelectElement).value;
-
-  if (selectedCategory) {
-    this.filteredEvents = this.events.filter(
-      (e) => e.category === selectedCategory
+  loadEvents() {
+    this.eventService.getEvents().subscribe(
+      (data) => {
+        this.events = data;
+        this.filteredEvents = data;
+        this.categories = [...new Set(data.map((event) => event.category))];
+        this.locations = [...new Set(data.map((event) => event.location))];
+        this.loadNextEvents(); // Load user's registered events
+      },
+      (error) => {
+        console.error('Error fetching events', error);
+      }
     );
-  } else {
-    this.filteredEvents = this.events; // Show all events if no category is selected
   }
-}
-filterByLocation(event: Event) {
-  const selectedLocation = (event.target as HTMLSelectElement).value;
 
-  if (selectedLocation) {
-    this.filteredEvents = this.events.filter(
-      (e) => e.location === selectedLocation
-    );
-  } else {
-    this.filteredEvents = this.events; // Show all events if no category is selected
+  loadNextEvents() {
+    // Mock data for "Your Next Events" section
+    this.nextEvents = this.events.filter((e) => e.description); // Add a field `isRegistered` for registered events
   }
-}
+
+  filterByCategory(event: Event) {
+    const selectedCategory = (event.target as HTMLSelectElement).value;
+    this.filteredEvents = selectedCategory
+      ? this.events.filter((e) => e.category === selectedCategory)
+      : this.events;
+  }
+
+  filterByLocation(event: Event) {
+    const selectedLocation = (event.target as HTMLSelectElement).value;
+    this.filteredEvents = selectedLocation
+      ? this.events.filter((e) => e.location === selectedLocation)
+      : this.events;
+  }
+
+  filterByDate(event: Event) {
+    const selectedDate = new Date((event.target as HTMLInputElement).value);
+    this.filteredEvents = this.events.filter(
+      (e) =>
+        new Date(e.startDate).toDateString() === selectedDate.toDateString()
+    );
+  }
+
+  filterByThisWeek() {
+    // Implement logic to filter events for this week
+  }
+
+  filterByWeekend() {
+    // Implement logic to filter events for the weekend
+  }
+
+  filterByNextWeek() {
+    // Implement logic to filter events for next week
+  }
+
+  bookEvent(eventId: number) {
+    this.router.navigate(['/book-event', eventId]);
+  }
+
+  viewEvent(eventId: number) {
+    this.router.navigate(['/view-event', eventId]);
+  }
 }

@@ -14,8 +14,8 @@ export class HeaderComponent implements OnInit {
 
   headerLinks = [
     { label: 'Home', route: '/' },
-    { label: 'Sign Up', route: '/signup' },
-    { label: 'Sign In', route: '/login' },
+    { label: 'Register', route: '/signup' },
+    { label: 'Log In', route: '/login' },
     { label: 'About', route: '/about' },
     { label: 'Profile', route: '/profile' },
     { label: 'Events', route: '/event-list' },

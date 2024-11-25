@@ -1,6 +1,6 @@
 <nav class="header-nav">
   <div class="logo">
-    <h1>Newham</h1>
+    <a href="/home"><h1>Newham VCS</h1></a>
   </div>
 
   <div class="search-bar-container">
@@ -14,7 +14,7 @@
 
   <ul class="nav-links">
     <ng-container *ngFor="let headerlink of headerLinks">
-      <li *ngIf="(headerlink.label === 'Sign In' || headerlink.label === 'Sign Up' || headerlink.label === 'AdminSign' || headerlink.label==='How to join') ? !isLoggedIn && !isAdmin : (headerlink.label === 'About' || headerlink.label === 'Profile' || headerlink.label === 'Events' || headerlink.label === 'Home') ? isLoggedIn : !isAdmin">
+      <li *ngIf="(headerlink.label === 'Log In' || headerlink.label === 'Register' || headerlink.label === 'Home' || headerlink.label==='How to join') ? !isLoggedIn && !isAdmin : (headerlink.label === 'About' || headerlink.label === 'Profile' || headerlink.label === 'Events' || headerlink.label === 'Home') ? isLoggedIn : !isAdmin">
         <a [routerLink]="headerlink.route">{{ headerlink.label }}</a>
       </li>
     </ng-container>
