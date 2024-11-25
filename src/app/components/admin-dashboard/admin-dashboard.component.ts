@@ -21,7 +21,8 @@ export class AdminDashboardComponent implements OnInit{
   bookings: Bookings[] = [];
   currentEvent: EventList | null = null;
   isEditMode: boolean = false;
-  newEvent: AddEvent = { eventName: '', description: '', startDate: new Date().toString(), location: '',category:'' };
+  newEvent:AddEvent = { eventName: '', description: '', startDate: new Date().toString(), location: '',category:'' };
+  selectedFile: File | null = null; // Add a property to store the selected file
   searchTerm: string = '';
   totalPages: number = 1;
   currentPage: number = 1;
@@ -36,6 +37,12 @@ export class AdminDashboardComponent implements OnInit{
     // Fetch events and bookings when dashboard is initialized
     this.getBookings();
     this.getEvents();
+  }
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.selectedFile = input.files[0];
+    }
   }
 
   getEvents():void{
@@ -124,27 +131,72 @@ changePage(page: number): void {
     });
   }
 
-  addEvent():void {
-    this.bookingService.addEvent(this.newEvent).subscribe((response) => {
-      this.createEvent.push(response);
-      this.toastr.success('Event added successfully');
-      console.log('Event Succesfully Added:',response);
-      this.closeModal(); // Refresh events after adding a new one
-      this.getEvents();
-    },
-  error=>{
-    console.error('Error while adding event',error)
-  });
+  addEvent(): void {
+    if (!this.selectedFile) {
+      this.toastr.error('Event image file is required.');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('eventName', this.newEvent.eventName);
+    formData.append('description', this.newEvent.description);
+    formData.append('category', this.newEvent.category);
+    formData.append('startDate', this.newEvent.startDate);
+    formData.append('location', this.newEvent.location);
+    formData.append('eventImageFile', this.selectedFile);
+
+    this.bookingService.addEvent(formData).subscribe(
+      (response) => {
+        this.toastr.success('Event added successfully!');
+        this.closeModal();
+        this.getEvents();
+        console.log('Response:', response);
+        // Reset the form after success
+        this.newEvent = {
+          eventName: '',
+          description: '',
+          category: '',
+          startDate: '',
+          location: '',
+        };
+        this.selectedFile = null;
+      },
+      (error) => {
+        console.error('Error while adding event:', error);
+        this.toastr.error('Failed to add event.');
+      }
+    );
   }
-  editEvent(eventData: EventList) {
-    this.bookingService.updateEvent(eventData.eventId,eventData).subscribe((response) => {
-      this.toastr.success('Event Updated Successfully');
-      this.getEvents(); // Refresh events after updating
-      this.closeModal();
-    }, error => {
-      console.error('Error while updating event', error);
-    });
+  editEvent(eventData: EventList): void {
+    const formData = new FormData();
+  
+    // Append all event fields to FormData
+    formData.append('eventId', eventData.eventId.toString());
+    formData.append('eventName', eventData.eventName);
+    formData.append('description', eventData.description);
+    formData.append('category', eventData.category);
+    formData.append('startDate', eventData.startDate);
+    formData.append('location', eventData.location);
+  
+    // Only append the file if it has been selected
+    if (this.selectedFile) {
+      formData.append('eventImageFile', this.selectedFile);
+    }
+  
+    this.bookingService.updateEvent(eventData.eventId, formData).subscribe(
+      (response) => {
+        this.toastr.success('Event Updated Successfully');
+        this.getEvents(); // Refresh the events list
+        this.closeModal(); // Close the modal or dialog
+        this.selectedFile = null; // Reset the file input
+      },
+      (error) => {
+        console.error('Error while updating event', error);
+        this.toastr.error('Failed to update the event.');
+      }
+    );
   }
+  
 
   deleteEvent(eventId: number) {
     this.bookingService.deleteEvent(eventId).subscribe(() => {

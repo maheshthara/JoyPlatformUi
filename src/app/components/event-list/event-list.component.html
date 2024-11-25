@@ -111,6 +111,16 @@
       <div class="card event-card h-100 shadow-sm">
         <div class="card-body">
           <h5 class="card-title text-primary">{{ event.eventName }}</h5>
+          <img
+    *ngIf="event.imageUrl"
+    [src]="event.imageUrl"
+    alt="Event Image"
+    class="event-image"
+  />
+   <!-- Placeholder for Missing Image -->
+   <ng-template #noImage>
+    <img src="assets/images/newham1.jpeg" alt="Default Event Image" class="event-image" />
+  </ng-template>
           <p class="card-text text-muted">
             <strong>Date:</strong> {{ event.startDate | date: 'fullDate' }}
           </p>

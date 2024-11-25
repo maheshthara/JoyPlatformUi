@@ -104,6 +104,16 @@
                   <label for="location">Location</label>
                   <input id="location" [(ngModel)]="newEvent.location" name="location" required />
               </div>
+               <!-- Event Image Upload -->
+            <div *ngIf="!isEditMode">
+                    <label for="eventImageFile">Event Image:</label>
+                    <input type="file" id="eventImageFile" (change)="onFileSelected($event)" />
+            </div>
+               <!-- Event Image Upload -->
+               <div *ngIf="isEditMode">
+                <label for="eventImageFile">Event Image:</label>
+                <input type="file" id="eventImageFile" (change)="onFileSelected($event)" />
+        </div>
               <!-- Submit Buttons -->
               <button type="submit" class="btn btn-success">
                   {{ isEditMode ? 'Update Event' : 'Add Event' }}

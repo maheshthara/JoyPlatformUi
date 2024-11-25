@@ -30,7 +30,11 @@ export class EventListComponent implements OnInit {
   loadEvents() {
     this.eventService.getEvents().subscribe(
       (data) => {
-        this.events = data;
+        this.events = data.map(event => {
+          // Prepend the base URL to the image URL
+          event.imageUrl = `https://localhost:7171${event.imageUrl}`;
+          return event;
+        });
         this.filteredEvents = data;
         this.categories = [...new Set(data.map((event) => event.category))];
         this.locations = [...new Set(data.map((event) => event.location))];
@@ -70,16 +74,37 @@ export class EventListComponent implements OnInit {
   }
 
   filterByThisWeek() {
-    // Implement logic to filter events for this week
+    const today = new Date();
+    const startOfWeek = new Date(today.setDate(today.getDate() - today.getDay())); // Start of this week (Sunday)
+    const endOfWeek = new Date(startOfWeek);
+    endOfWeek.setDate(startOfWeek.getDate() + 6); // End of this week (Saturday)
+  
+    this.filteredEvents = this.events.filter(event => {
+      const eventDate = new Date(event.startDate);
+      return eventDate >= startOfWeek && eventDate <= endOfWeek;
+    });
   }
-
+  
   filterByWeekend() {
-    // Implement logic to filter events for the weekend
+    this.filteredEvents = this.events.filter(event => {
+      const eventDate = new Date(event.startDate);
+      const day = eventDate.getDay(); // Get day of the week (0 = Sunday, 6 = Saturday)
+      return day === 0 || day === 6; // Sunday or Saturday
+    });
   }
-
+  
   filterByNextWeek() {
-    // Implement logic to filter events for next week
+    const today = new Date();
+    const startOfNextWeek = new Date(today.setDate(today.getDate() - today.getDay() + 7)); // Start of next week (next Sunday)
+    const endOfNextWeek = new Date(startOfNextWeek);
+    endOfNextWeek.setDate(startOfNextWeek.getDate() + 6); // End of next week (next Saturday)
+  
+    this.filteredEvents = this.events.filter(event => {
+      const eventDate = new Date(event.startDate);
+      return eventDate >= startOfNextWeek && eventDate <= endOfNextWeek;
+    });
   }
+  
 
   bookEvent(eventId: number) {
     this.router.navigate(['/book-event', eventId]);
