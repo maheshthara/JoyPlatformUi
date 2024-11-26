@@ -3,8 +3,8 @@
   <h2 class="mb-4 text-center text-primary">Discover Events</h2>
 
   <!-- Filters Section -->
-  <div class="row mb-4">
-    <div class="col-md-4 calendar-container">
+  <div class="row mb-4 filters-container">
+    <div class="col-md-4">
       <label for="dateFilter" class="form-label text-secondary"><strong>Date:</strong></label>
       <input
         id="dateFilter"
@@ -40,12 +40,20 @@
   <!-- Main Content: Calendar and Events -->
   <div class="row">
     <!-- Calendar Section -->
-    <div class="col-md-4">
+    <div class="col-md-4 calendar-container">
       <div class="card shadow">
         <div class="card-body">
           <h5 class="text-center text-primary mb-3">Calendar</h5>
+
+          <!-- Calendar Grid -->
+          <div class="calendar-grid">
+            <!-- <div *ngFor="let day of calendarDays" class="calendar-cell" [class.selected]="day.selected">
+              {{ day.date }}
+            </div> -->
+          </div>
+
           <!-- Calendar Filter Buttons -->
-          <div class="d-flex flex-column align-items-center">
+          <div class="d-flex flex-column align-items-center mt-3">
             <button class="btn btn-outline-primary w-100 mb-2" (click)="filterByThisWeek()">This Week</button>
             <button class="btn btn-outline-primary w-100 mb-2" (click)="filterByWeekend()">This Weekend</button>
             <button class="btn btn-outline-primary w-100" (click)="filterByNextWeek()">Next Week</button>
@@ -54,29 +62,34 @@
       </div>
     </div>
 
-    <!-- Events Section -->
-    <div class="col-md-8">
-      <div *ngIf="filteredEvents.length === 0" class="text-muted text-center">
-        No events found for the selected filters.
-      </div>
-      <div *ngFor="let event of filteredEvents" class="mb-4">
-        <div class="card shadow-sm">
-          <img
-            *ngIf="event.imageUrl"
-            [src]="event.imageUrl"
-            alt="Event Image"
-            class="card-img-top"
-          />
-          <div class="card-body">
-            <h5 class="card-title text-primary">{{ event.eventName }}</h5>
-            <p class="card-text"><strong>Date:</strong> {{ event.startDate | date: 'fullDate' }}</p>
-            <p class="card-text"><strong>Location:</strong> {{ event.location }}</p>
-            <p class="card-text"><strong>Description:</strong> {{ event.description }}</p>
-            <p class="card-text"><strong>Category:</strong> {{ event.category }}</p>
-            <button class="btn btn-gradient w-100" (click)="bookEvent(event.eventId)">Book Now</button>
-          </div>
-        </div>
+   <!-- Events Section -->
+<div class="col-md-8">
+  <div *ngIf="filteredEvents.length === 0" class="text-muted text-center">
+    No events found for the selected filters.
+  </div>
+
+  <div *ngFor="let event of filteredEvents" class="event-item mb-4">
+    <div class="card shadow-sm p-3 d-flex flex-row align-items-center">
+      <!-- Event Image -->
+      <img
+        *ngIf="event.imageUrl"
+        [src]="event.imageUrl"
+        alt="Event Image"
+        class="img-fluid event-image me-3"  (click)="bookEvent(event.eventId)"
+      />
+
+      <!-- Event Details -->
+      <div class="event-details">
+        <h5 class="card-title text-primary">{{ event.eventName }}</h5>
+        <p class="card-text"><strong>Date:</strong> {{ event.startDate | date: 'fullDate' }}</p>
+        <p class="card-text"><strong>Location:</strong> {{ event.location }}</p>
+        <p class="card-text"><strong>Description:</strong> {{ event.description }}</p>
+        <p class="card-text"><strong>Category:</strong> {{ event.category }}</p>
+        <p class="card-text"><strong>Attendees:</strong> {{ bookings.length }}</p>
+        <button class="btn btn-gradient mt-3" (click)="bookEvent(event.eventId)">Book Now</button>
       </div>
     </div>
+  </div>
+</div>
   </div>
 </div>

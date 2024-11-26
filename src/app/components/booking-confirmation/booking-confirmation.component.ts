@@ -22,7 +22,9 @@ export class BookingConfirmationComponent implements OnInit {
     this.eventId = +this.route.snapshot.paramMap.get('id')!;
    
       this.eventservice.getEventById(this.eventId.toString()).subscribe(eventData => {
-        this.event = eventData;
+        eventData.imageUrl=`https://localhost:7171${eventData.imageUrl}`;
+        this.event=eventData
+        console.log(this.event)
       });
   }
 

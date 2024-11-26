@@ -1,86 +1,162 @@
+/* General Page Layout */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+/* Calendar Section */
 .calendar-container {
-  display: block; /* Ensures the calendar is always visible */
-  transition: height 0.3s ease-in-out;
-}
-
-/* General Styling */
-.container {
-  max-width: 1200px;
-}
-
-h2 {
-  font-weight: bold;
-  color: #2575fc;
-}
-
-h5 {
-  font-weight: bold;
-}
-
-/* Filters */
-.form-select,
-.form-control {
-  border-radius: 8px;
+  width: 100%;
+  max-width: 300px;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #fff;
   border: 1px solid #ddd;
-  padding: 10px 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-label {
-  font-size: 0.9rem;
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-weight: bold;
+  color: #0062cc;
+  margin-bottom: 10px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  text-align: center;
+}
+
+.calendar-cell {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.calendar-cell:hover {
+  background-color: #e9ecef;
+}
+
+.calendar-cell.selected {
+  background-color: #0062cc;
+  color: #fff;
+}
+
+/* Filters Section */
+.filters-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.dropdown {
+  position: relative;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.dropdown:hover {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.reset-filters {
+  font-size: 14px;
+  color: #0062cc;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.toggle-suggested {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.toggle-suggested input[type="checkbox"] {
+  accent-color: #0062cc;
+}
+
+/* Events List */
+.event-list {
+  margin-top: 90px;
+}
+
+.event-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #fff;
+  border: 10px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.event-item img {
+  width: 190px;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+/* Style for the event image */
+.event-image {
+  width: 150px; /* Adjust the width to your needs */
+  height: auto;
+  border-radius: 19px; /* Optional: Adds rounded corners */
+  object-fit: cover; /* Ensures the image fits nicely */
+  cursor: pointer;
+}
+
+/* Event details alignment and spacing */
+.event-details {
+  flex: 1; /* Ensures the details occupy the remaining space */
+}
+.event-title {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.event-time {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.event-description {
+  font-size: 14px;
   color: #444;
 }
 
-/* Cards */
-.card {
-  border-radius: 10px;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-
-.card:hover {
-  transform: scale(1.03);
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-.card-img-top {
-  height: 30%;
-  width: 30%;
-  object-fit: cover;
-  border-bottom: 1px solid #ddd;
-}
-
 /* Buttons */
-.btn-gradient {
-  background: linear-gradient(45deg, #6a11cb, #2575fc);
-  color: white;
-  font-weight: bold;
-  border: none;
+.btn {
+  border: 1px solid #0062cc;
+  padding: 8px 15px;
   border-radius: 5px;
-  padding: 10px;
+  background-color: #fff;
+  color: #0062cc;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.btn-gradient:hover {
-  background: linear-gradient(45deg, #2575fc, #6a11cb);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.btn-outline-primary {
-  font-weight: bold;
-  border-radius: 5px;
-}
-
-.btn-outline-primary:hover {
-  background-color: #2575fc;
-  color: white;
-}
-
-/* Responsiveness */
-@media (max-width: 768px) {
-  .row-cols-md-2 {
-    row-gap: 1.5rem;
-  }
-
-  .card-img-top {
-    height: 150px;
-  }
+.btn:hover {
+  background-color: #0062cc;
+  color: #fff;
 }

@@ -3,6 +3,7 @@ import { EventService } from '../../services/event.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { EventList } from '../../models/Events';
+import { Bookings } from '../../models/Booking';
 
 @Component({
   selector: 'app-event-list',
@@ -17,6 +18,7 @@ export class EventListComponent implements OnInit {
   nextEvents: EventList[] = []; // User's registered events
   categories: string[] = [];
   locations: string[] = [];
+  bookings: Bookings[] = [];
 
   constructor(
     private eventService: EventService,
