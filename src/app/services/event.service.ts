@@ -11,21 +11,22 @@ export class EventService {
   constructor(private http:HttpClient) { }
 
   getEvents():Observable<EventList[]>{
-    const token = localStorage.getItem('jwtToken'); // Retrieve token from localStorage
-    if (!token) {
-      throw new Error('User is not authorized. No token found.');
-    }
+    // const token = localStorage.getItem('jwtToken'); // Retrieve token from localStorage
+    // if (!token) {
+    //   throw new Error('User is not authorized. No token found.');
+    // }
 
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`,
-    });
+    // const headers = new HttpHeaders({
+    //   'Authorization': `Bearer ${token}`,
+    // });
 
-    return this.http.get<EventList[]>(`${this.apiUrl}/getAllEvents`, { headers }).pipe(
-      catchError((error) => {
-        console.error('Error fetching goals:', error);
-        throw error;
-      })
-    );
+    // return this.http.get<EventList[]>(`${this.apiUrl}/getAllEvents`, { headers }).pipe(
+    //   catchError((error) => {
+    //     console.error('Error fetching goals:', error);
+    //     throw error;
+    //   })
+    // );
+    return this.http.get<EventList[]>(`${this.apiUrl}/getAllEvents`);
   }
   bookEvent(eventId: number):Observable<EventList> {
     const token = localStorage.getItem('jwtToken'); // Retrieve token from localStorage

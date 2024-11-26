@@ -58,5 +58,14 @@ export class HeaderComponent implements OnInit {
     this.authService.logout();  // Call logout from AuthService
     this.router.navigate(['/login']); // Redirect to sign-in page
   }
+  eventList(){
+    const token = localStorage.getItem('jwtToken'); // Retrieve token from localStorage
+    if(!token){
+    this.router.navigate(['/signup']);
+    }
+    else{
+      this.router.navigate(['/event-list']);
+    }
+  }
 }
 

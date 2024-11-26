@@ -34,7 +34,7 @@ export class LoginComponent {
       next: (response) => {
           console.log('Signin successful:', response);
           this.toastr.success(`${userLogin.username}`, 'Welcome to Joy');
-          this.router.navigate(['/home']);
+          this.router.navigate(['/event-list']);
         },
       error: (error) => {
           console.error('Signin failed:', error);
