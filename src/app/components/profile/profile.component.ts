@@ -25,6 +25,7 @@ export class ProfileComponent implements OnInit {
   user:any;
   editingGoal: HealthGoal | null = null;
   showEditModal: boolean = false;
+goal: any;
 
 
   constructor(private goalService: GoalsService,private authService:AuthService,private toastr:ToastrService) {}

@@ -31,7 +31,7 @@ body {
   }
   
   .mission-vision .card {
-    background: linear-gradient(135deg, #ffb400, #e09b00);
+    background: linear-gradient(135deg, green, #e09b00);
     border-radius: 12px;
     padding: 30px;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
@@ -106,7 +106,7 @@ body {
   
   /* Feedback Form Section */
   .feedback-form {
-    background: linear-gradient(135deg, #ffb400, #e09b00);
+    background: linear-gradient(135deg, green, #e09b00);
     color: white;
     padding: 40px 5%;
     border-radius: 12px;
@@ -166,7 +166,7 @@ body {
   }
   
   .feedback-form .btn-submit:hover {
-    background-color: #e09b00;
+    background-color:green;
   }
   
   /* Responsive Styles */

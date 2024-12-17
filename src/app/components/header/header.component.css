@@ -2,7 +2,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f7fc; /* Light background for contrast */
   box-sizing: border-box;
 }
 
@@ -13,21 +14,28 @@ body {
   align-items: center;
   background-color: #1a1a2e; /* Dark navy background */
   color: #ffffff;
-  padding: 10px 20px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 20px 40px; /* Larger padding for balance */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Sharper shadow */
   position: sticky;
   top: 0;
   z-index: 1000;
+  border-bottom: 2px solid #ffb400; /* Accent border */
 }
 
 /* Logo */
 .header-nav .logo h1 {
   margin: 0;
-  font-size: 24px;
-  font-weight: bold;
-  color: #ffb400; /* Gold accent for the logo */
+  font-size: 28px; /* Larger font size for the logo */
+  font-weight: 700;
+  color: #ffb400; /* Gold accent */
   cursor: pointer;
   text-transform: uppercase;
+  letter-spacing: 2px; /* Letter spacing for a modern look */
+  transition: transform 0.3s ease;
+}
+
+.header-nav .logo h1:hover {
+  transform: scale(1.1); /* Subtle hover effect */
 }
 
 /* Search Bar Container */
@@ -42,36 +50,42 @@ body {
   display: flex;
   align-items: center;
   background-color: #ffffff;
-  border-radius: 30px;
-  padding: 5px 10px;
+  border-radius: 50px;
+  padding: 10px 20px;
   width: 100%;
   max-width: 400px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); /* Larger shadow for depth */
 }
 
 .header-nav .search-bar input {
   flex: 1;
   border: none;
   outline: none;
-  padding: 8px 10px;
+  padding: 12px 15px;
   font-size: 16px;
-  border-radius: 30px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.header-nav .search-bar input:focus {
+  background-color: #f0f0f0; /* Light background on focus */
 }
 
 .header-nav .search-bar button {
   background-color: #ffb400;
   border: none;
-  padding: 8px 15px;
-  border-radius: 30px;
+  padding: 12px 18px;
+  border-radius: 50px;
   cursor: pointer;
   color: #ffffff;
   font-size: 16px;
   font-weight: bold;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .header-nav .search-bar button:hover {
-  background-color: #e09b00; /* Darker gold on hover */
+  background-color: #e09b00;
+  transform: scale(1.05); /* Subtle scale effect on hover */
 }
 
 /* Navigation Links */
@@ -81,26 +95,28 @@ body {
   align-items: center;
   margin: 0;
   padding: 0;
-  gap: 20px;
+  gap: 30px;
 }
 
 .header-nav .nav-links li {
   position: relative;
+  transition: transform 0.3s ease;
 }
 
 .header-nav .nav-links li a {
   color: #ffffff;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  padding: 8px 12px;
+  border-radius: 30px;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
 .header-nav .nav-links li a:hover {
   background-color: #ffb400;
   color: #1a1a2e;
+  transform: translateY(-2px); /* Smooth lift effect */
 }
 
 /* Resources Dropdown */
@@ -112,11 +128,12 @@ body {
   cursor: pointer;
   display: flex;
   align-items: center;
+  font-weight: 600;
 }
 
 .resources-title .down-arrow {
-  margin-left: 5px;
-  font-size: 12px;
+  margin-left: 8px;
+  font-size: 14px;
 }
 
 .resources-dropdown {
@@ -125,21 +142,35 @@ body {
   left: 0;
   background-color: #ffffff;
   color: #1a1a2e;
-  border-radius: 5px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   list-style: none;
-  padding: 10px 0;
+  padding: 12px 0;
   margin: 0;
   min-width: 150px;
   z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.resources-item:hover .resources-dropdown {
+  opacity: 1;
+  visibility: visible;
 }
 
 .resources-dropdown li {
-  padding: 8px 15px;
+  padding: 12px 20px;
   cursor: pointer;
+  font-weight: 600;
   transition: background-color 0.3s ease;
 }
-
+.active-link a {
+  background-color:green;
+  color: #1a1a2e; /* Highlight text */
+  font-weight: bold;
+  border-radius: 5px;
+}
 .resources-dropdown li:hover {
   background-color: #ffb400;
   color: #ffffff;
@@ -147,14 +178,15 @@ body {
 
 /* Logout Button */
 .nav-links li a[ng-reflect-router-link]:hover {
-  background-color: #ff5a5a; /* Red logout hover */
+  background-color: #ff5a5a;
+  color: #ffffff; /* Red logout hover */
 }
 
 /* Mobile Styles */
 @media screen and (max-width: 768px) {
   .header-nav {
     flex-wrap: wrap;
-    padding: 10px;
+    padding: 15px 25px;
   }
 
   .search-bar-container {

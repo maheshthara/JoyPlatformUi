@@ -14,7 +14,8 @@
 
   <ul class="nav-links">
     <ng-container *ngFor="let headerlink of headerLinks">
-      <li *ngIf="(headerlink.label === 'Log In' || headerlink.label === 'Register' || headerlink.label === 'Home' || headerlink.label==='How to join') ? !isLoggedIn && !isAdmin : (headerlink.label === 'About' || headerlink.label === 'Profile' || headerlink.label === 'Events' || headerlink.label === 'Home') ? isLoggedIn : !isAdmin">
+      <li *ngIf="(headerlink.label === 'Log In' || headerlink.label === 'Register' || headerlink.label === 'Home' || headerlink.label==='How to join') ? !isLoggedIn && !isAdmin : (headerlink.label === 'About' || headerlink.label === 'Profile' || headerlink.label === 'Events' || headerlink.label === 'Home') ? isLoggedIn : !isAdmin"
+       [class.active-link]="headerlink.label === 'Register'">
         <a [routerLink]="headerlink.route">{{ headerlink.label }}</a>
       </li>
     </ng-container>

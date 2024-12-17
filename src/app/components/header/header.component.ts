@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -37,6 +38,7 @@ export class HeaderComponent implements OnInit {
 
   isLoggedIn: boolean = false;  // Default login state
   isAdmin: boolean = false;  // Flag to determine if the user is an admin
+  currentRoute: string = '';
 
   constructor(private authService: AuthService, private router: Router) {
    }
@@ -50,9 +52,19 @@ export class HeaderComponent implements OnInit {
       this.isLoggedIn = status;  // Update the login state
     });
     console.log(this.isLoggedIn);
+     // Listen to route changes
+     this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      this.currentRoute = this.router.url; // Update current route on navigation
+    });
   }
   navigateToResource(link: string): void {
     this.router.navigate([link]);
+  }
+  // Check if the route is active
+  isRouteActive(route: string): boolean {
+    return this.currentRoute === route;
   }
   logout(): void {
     this.authService.logout();  // Call logout from AuthService
