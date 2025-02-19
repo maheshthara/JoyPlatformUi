@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
     { label: 'Log In', route: '/login' },
     { label: 'About', route: '/about' },
     { label: 'Profile', route: '/profile' },
-    { label: 'Events', route: '/event-list' },
+    { label: 'Services', route: '/event-list' },
     // { label: 'AdminSign', route: '/admin/login' },
     {label:'How to join',route:'/join'},
     {label:'Contact',route:'/contact'}

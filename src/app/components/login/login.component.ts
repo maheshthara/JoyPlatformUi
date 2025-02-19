@@ -33,7 +33,7 @@ export class LoginComponent {
     this.authService.userLogin(userLogin).subscribe({
       next: (response) => {
           console.log('Signin successful:', response);
-          this.toastr.success(`${userLogin.username}`, 'Welcome to Joy');
+          this.toastr.success(`${userLogin.username}`, 'Welcome to Newham VCS');
           this.router.navigate(['/event-list']);
         },
       error: (error) => {

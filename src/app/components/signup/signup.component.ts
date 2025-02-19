@@ -31,7 +31,7 @@ export class SignupComponent {
           this.authService.signUp(user).subscribe({
               next: (response) => {
                   console.log('Signup successful:', response);
-                  this.toastr.success('Signup successful!', 'Welcome to Joy');
+                  this.toastr.success('Signup successful!', 'Welcome to Newham Vcs');
                   this.router.navigate(['/signin']);
                 },
               error: (error) => {

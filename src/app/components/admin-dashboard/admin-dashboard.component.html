@@ -2,7 +2,7 @@
   <!-- Header Section -->
   <div class="header">
       <h2 class="dashboard-title">Admin Dashboard</h2>
-      <button class="btn btn-success" (click)="openModal()">Add Event</button>
+      <button class="btn btn-success" (click)="openModal()">Add Service</button>
   </div>
 
   <!-- Search Section -->
@@ -18,7 +18,7 @@
 
   <!-- Manage Events Section -->
   <div class="section manage-events">
-      <h3>Manage Events</h3>
+      <h3>Manage Services</h3>
       <diV *ngIf="pagedEvents.length==0">
         <h5>No Events..</h5>
       </diV>
@@ -57,20 +57,20 @@
   <!-- Add/Edit Event Modal -->
   <div *ngIf="currentEvent || !createEvent" class="modal">
       <div class="modal-content">
-          <h3>{{ isEditMode ? 'Edit Event' : 'Add New Event' }}</h3>
+          <h3>{{ isEditMode ? 'Edit Service' : 'Add New Service' }}</h3>
           <form (ngSubmit)="isEditMode ? editEvent(currentEvent!) : addEvent()">
               <!-- Event Name -->
               <div *ngIf="isEditMode">
-                  <label for="eventName">Event Name</label>
+                  <label for="eventName">Service Name</label>
                   <input id="eventName" [(ngModel)]="currentEvent!.eventName" name="eventName" required />
               </div>
               <div *ngIf="!isEditMode">
-                  <label for="eventName">Event Name</label>
+                  <label for="eventName">Service Name</label>
                   <input id="eventName" [(ngModel)]="newEvent.eventName" name="eventName" required />
               </div>
               <!--Category-->
               <div *ngIf="!isEditMode">
-                <label for="eventCategory">Event Category</label>
+                <label for="eventCategory">Service Category</label>
                 <input id="eventCategory" [(ngModel)]="newEvent.category" name="eventName" required />
             </div>
             <div *ngIf="isEditMode">
@@ -88,11 +88,11 @@
               </div>
               <!-- Event Date -->
               <div *ngIf="isEditMode">
-                  <label for="date">Event Date</label>
+                  <label for="date">Service Date</label>
                   <input type="date" id="date" [(ngModel)]="currentEvent!.startDate" name="date" required />
               </div>
               <div *ngIf="!isEditMode">
-                  <label for="date">Event Date</label>
+                  <label for="date">Service Date</label>
                   <input type="date" id="date" [(ngModel)]="newEvent.startDate" name="date" required />
               </div>
               <!-- Location -->
@@ -106,12 +106,12 @@
               </div>
                <!-- Event Image Upload -->
             <div *ngIf="!isEditMode">
-                    <label for="eventImageFile">Event Image:</label>
+                    <label for="eventImageFile">Service Image:</label>
                     <input type="file" id="eventImageFile" (change)="onFileSelected($event)" />
             </div>
                <!-- Event Image Upload -->
                <div *ngIf="isEditMode">
-                <label for="eventImageFile">Event Image:</label>
+                <label for="eventImageFile">Service Image:</label>
                 <input type="file" id="eventImageFile" (change)="onFileSelected($event)" />
         </div>
               <!-- Submit Buttons -->
@@ -132,7 +132,7 @@
       <div *ngFor="let booking of bookings" class="booking-card">
           <div class="booking-details">
               <div><strong>BookingID:</strong> {{ booking.bookingId }}</div>
-              <div><strong>EventID:</strong> {{ booking.eventId }}</div>
+              <div><strong>ServiceID:</strong> {{ booking.eventId }}</div>
               <div><strong>UserID:</strong> {{ booking.userId }}</div>
           </div>
           <div class="button-group">

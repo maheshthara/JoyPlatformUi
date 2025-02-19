@@ -147,7 +147,7 @@ changePage(page: number): void {
 
     this.bookingService.addEvent(formData).subscribe(
       (response) => {
-        this.toastr.success('Event added successfully!');
+        this.toastr.success('Service added successfully!');
         this.closeModal();
         this.getEvents();
         console.log('Response:', response);
@@ -185,7 +185,7 @@ changePage(page: number): void {
   
     this.bookingService.updateEvent(eventData.eventId, formData).subscribe(
       (response) => {
-        this.toastr.success('Event Updated Successfully');
+        this.toastr.success('Service Updated Successfully');
         this.getEvents(); // Refresh the events list
         this.closeModal(); // Close the modal or dialog
         this.selectedFile = null; // Reset the file input
@@ -200,7 +200,7 @@ changePage(page: number): void {
 
   deleteEvent(eventId: number) {
     this.bookingService.deleteEvent(eventId).subscribe(() => {
-      this.toastr.success('Event Deleted Succesful')
+      this.toastr.success('Service Deleted Succesful')
       this.getEvents(); // Refresh events after deleting an event
     });
   }
