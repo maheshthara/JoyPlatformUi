@@ -1,6 +1,6 @@
 <nav class="header-nav">
   <div class="logo">
-    <a (click)="eventList()" style="cursor: pointer;"><h1 style="color: white;">Newham VCS</h1></a>
+    <a (click)="eventList()" style="cursor: pointer;"><h1 style="color:aqua;">Newham VCS</h1></a>
   </div>
 
   <div class="search-bar-container">
@@ -38,7 +38,7 @@
     </li>
 
     <li *ngIf="isLoggedIn || isAdmin">
-      <a (click)="logout()">Logout</a>
+      <a (click)="logout()" style="cursor: pointer;">Logout</a>
     </li>
   </ul>
 </nav>

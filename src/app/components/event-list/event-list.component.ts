@@ -19,6 +19,8 @@ export class EventListComponent implements OnInit {
   categories: string[] = [];
   locations: string[] = [];
   bookings: Bookings[] = [];
+  selectedCategory: string = '';
+  selectedLocation: string = '';
 
   constructor(
     private eventService: EventService,
@@ -37,7 +39,7 @@ export class EventListComponent implements OnInit {
           event.imageUrl = `https://localhost:7171${event.imageUrl}`;
           return event;
         });
-        this.filteredEvents = data;
+        this.filteredEvents = [...this.events];
         this.categories = [...new Set(data.map((event) => event.category))];
         this.locations = [...new Set(data.map((event) => event.location))];
         this.loadNextEvents(); // Load user's registered events
@@ -53,18 +55,22 @@ export class EventListComponent implements OnInit {
     this.nextEvents = this.events.filter((e) => e.description); // Add a field `isRegistered` for registered events
   }
 
+  filterEvents() {
+    this.filteredEvents = this.events.filter(event => {
+      const categoryMatch = this.selectedCategory ? event.category === this.selectedCategory : true;
+      const locationMatch = this.selectedLocation ? event.location === this.selectedLocation : true;
+      return categoryMatch && locationMatch;
+    });
+  }
+
   filterByCategory(event: Event) {
-    const selectedCategory = (event.target as HTMLSelectElement).value;
-    this.filteredEvents = selectedCategory
-      ? this.events.filter((e) => e.category === selectedCategory)
-      : this.events;
+    this.selectedCategory = (event.target as HTMLSelectElement).value;
+    this.filterEvents(); // Apply both filters together
   }
 
   filterByLocation(event: Event) {
-    const selectedLocation = (event.target as HTMLSelectElement).value;
-    this.filteredEvents = selectedLocation
-      ? this.events.filter((e) => e.location === selectedLocation)
-      : this.events;
+    this.selectedLocation = (event.target as HTMLSelectElement).value;
+    this.filterEvents(); // Apply both filters together
   }
 
   filterByDate(event: Event) {
@@ -107,7 +113,6 @@ export class EventListComponent implements OnInit {
     });
   }
   
-
   bookEvent(eventId: number) {
     this.router.navigate(['/book-event', eventId]);
   }
@@ -115,9 +120,10 @@ export class EventListComponent implements OnInit {
   viewEvent(eventId: number) {
     this.router.navigate(['/view-event', eventId]);
   }
+
   isCalendarOpen: boolean = true; // Calendar is open by default
 
-toggleCalendar() {
-  this.isCalendarOpen = !this.isCalendarOpen;
-}
+  toggleCalendar() {
+    this.isCalendarOpen = !this.isCalendarOpen;
+  }
 }

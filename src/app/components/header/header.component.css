@@ -2,121 +2,118 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
-  background-color: #f4f7fc; /* Light background for contrast */
+  font-family: 'Georgia', serif;
+  background-color: #f4f1ed;
+  color: #3c3c3c;
   box-sizing: border-box;
 }
 
 /* Header Navigation */
 .header-nav {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  background-color:purple; /* Dark navy background */
-  color: #ffffff;
-  padding: 20px 40px; /* Larger padding for balance */
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Sharper shadow */
+  background-color: #f0eee9;
+  color: #2e2e2e;
+  padding: 20px 30px;
+  border-bottom: 1px solid #dcd6cf;
   position: sticky;
   top: 0;
-  z-index: 1000;
-  border-bottom: 2px solid #ffb400; /* Accent border */
+  z-index: 999;
 }
 
 /* Logo */
 .header-nav .logo h1 {
+  font-size: 28px;
+  font-weight: 500;
+  color: #486e58;
   margin: 0;
-  font-size: 28px; /* Larger font size for the logo */
-  font-weight: 700;
-  color: #ffb400; /* Gold accent */
-  cursor: pointer;
-  text-transform: uppercase;
-  letter-spacing: 2px; /* Letter spacing for a modern look */
-  transition: transform 0.3s ease;
+  text-transform: none;
+  letter-spacing: 1px;
+  font-family: 'Georgia', serif;
+  transition: color 0.3s ease;
 }
 
 .header-nav .logo h1:hover {
-  transform: scale(1.1); /* Subtle hover effect */
+  color: #375e49;
 }
 
-/* Search Bar Container */
-.header-nav .search-bar-container {
+/* Search Bar */
+.search-bar-container {
   flex: 1;
-  margin: 0 20px;
   display: flex;
   justify-content: center;
+  margin: 10px 0;
 }
 
-.header-nav .search-bar {
+.search-bar {
   display: flex;
   align-items: center;
   background-color: #ffffff;
-  border-radius: 50px;
-  padding: 10px 20px;
+  border-radius: 30px;
+  padding: 8px 16px;
   width: 100%;
   max-width: 400px;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); /* Larger shadow for depth */
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
 }
 
-.header-nav .search-bar input {
+.search-bar input {
   flex: 1;
   border: none;
   outline: none;
-  padding: 12px 15px;
-  font-size: 16px;
-  border-radius: 50px;
-  transition: all 0.3s ease;
+  font-size: 15px;
+  padding: 10px;
+  border-radius: 30px;
+  background-color: transparent;
+  font-family: inherit;
 }
 
-.header-nav .search-bar input:focus {
-  background-color: #f0f0f0; /* Light background on focus */
-}
-
-.header-nav .search-bar button {
-  background-color: #ffb400;
+.search-bar button {
+  background-color: #6f9674;
+  color: #fff;
   border: none;
-  padding: 12px 18px;
-  border-radius: 50px;
+  padding: 8px 14px;
+  border-radius: 20px;
   cursor: pointer;
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
 }
 
-.header-nav .search-bar button:hover {
-  background-color: #e09b00;
-  transform: scale(1.05); /* Subtle scale effect on hover */
+.search-bar button:hover {
+  background-color: #5e8463;
 }
 
 /* Navigation Links */
-.header-nav .nav-links {
+.nav-links {
   list-style: none;
   display: flex;
   align-items: center;
-  margin: 0;
+  gap: 20px;
   padding: 0;
-  gap: 30px;
+  margin: 0;
 }
 
-.header-nav .nav-links li {
-  position: relative;
-  transition: transform 0.3s ease;
-}
-
-.header-nav .nav-links li a {
-  color: #ffffff;
+.nav-links li a {
+  color: #486e58;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 16px;
-  padding: 8px 12px;
-  border-radius: 30px;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  padding: 6px 14px;
+  border-radius: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-weight: 500;
 }
 
-.header-nav .nav-links li a:hover {
-  background-color: #ffb400;
-  color:purple;
-  transform: translateY(-2px); /* Smooth lift effect */
+.nav-links li a:hover {
+  background-color: #dbe7dd;
+  color: #2d4f3d;
+}
+
+/* Active Link */
+.active-link a {
+  background-color: #cce1d3;
+  color: #2d4f3d;
+  font-weight: 600;
 }
 
 /* Resources Dropdown */
@@ -128,30 +125,31 @@ body {
   cursor: pointer;
   display: flex;
   align-items: center;
-  font-weight: 600;
+  font-weight: 500;
+  color: #486e58;
 }
 
 .resources-title .down-arrow {
-  margin-left: 8px;
-  font-size: 14px;
+  margin-left: 6px;
+  font-size: 12px;
 }
 
 .resources-dropdown {
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #ffffff;
-  color: #1a1a2e;
-  border-radius: 8px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  color: #2e2e2e;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   list-style: none;
-  padding: 12px 0;
+  padding: 10px 0;
   margin: 0;
-  min-width: 150px;
-  z-index: 100;
+  min-width: 160px;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 100;
 }
 
 .resources-item:hover .resources-dropdown {
@@ -160,56 +158,56 @@ body {
 }
 
 .resources-dropdown li {
-  padding: 12px 20px;
+  padding: 10px 16px;
   cursor: pointer;
-  font-weight: 600;
   transition: background-color 0.3s ease;
+  font-size: 14px;
 }
-.active-link a {
-  background-color:green;
-  color: #1a1a2e; /* Highlight text */
-  font-weight: bold;
-  border-radius: 5px;
-}
+
 .resources-dropdown li:hover {
-  background-color: #ffb400;
-  color: #ffffff;
+  background-color: #edf2ef;
 }
 
 /* Logout Button */
-.nav-links li a[ng-reflect-router-link]:hover {
-  background-color: #ff5a5a;
-  color: #ffffff; /* Red logout hover */
+.nav-links li a.logout {
+  background-color: #ba4a3c;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.nav-links li a.logout:hover {
+  background-color: #a53e30;
 }
 
 /* Mobile Styles */
 @media screen and (max-width: 768px) {
   .header-nav {
-    flex-wrap: wrap;
-    padding: 15px 25px;
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .logo {
+    text-align: center;
+    margin-bottom: 12px;
   }
 
   .search-bar-container {
     order: 2;
     width: 100%;
-    margin: 10px 0;
+    margin-bottom: 12px;
   }
 
   .nav-links {
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    width: 100%;
     order: 3;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
   }
 
-  .logo {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-
-  .search-bar {
-    max-width: 100%;
+  .resources-dropdown {
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
