@@ -1,0 +1,154 @@
+/* Container for profile page */
+.profile-container {
+  background-color: #f9f9f9;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile Header Section */
+.profile-header {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-image img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 4px solid #ffb400;
+  margin-bottom: 20px;
+}
+
+.profile-details h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.profile-details .email {
+  font-size: 1.2rem;
+  color: #888;
+}
+
+.profile-details .bio {
+  font-size: 1rem;
+  color: #666;
+  margin: 15px 0;
+}
+
+.profile-details .btn {
+  background-color: #ffb400;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.profile-details .btn:hover {
+  background-color: #e69a00;
+}
+
+/* Goals Section */
+.goals-section {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.goals-section h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.goal-card {
+  background-color: #f8f8f8;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.goal-card-header {
+  background-color: #ffb400;
+  color: white;
+  padding: 10px;
+  border-radius: 8px 8px 0 0;
+}
+
+.goal-card-body {
+  padding: 20px;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+.goal-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.goal-actions button {
+  font-size: 1rem;
+}
+
+.goal-actions button:hover {
+  opacity: 0.8;
+}
+
+.btn-warning {
+  background-color: #ff9800;
+}
+
+.btn-danger {
+  background-color: #f44336;
+}
+
+/* Add New Goal Form */
+.new-goal-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.new-goal-form h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.new-goal-form .form-group {
+  margin-bottom: 20px;
+}
+
+.new-goal-form .form-control {
+  font-size: 1.1rem;
+  padding: 12px;
+}
+
+.new-goal-form button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  padding: 12px;
+  width: 100%;
+}
+
+.new-goal-form button:hover {
+  background-color: #218838;
+}
+
+.alert-warning {
+  font-size: 1.1rem;
+  padding: 15px;
+  background-color: #fff3cd;
+  color: #856404;
+  border-radius: 8px;
+}

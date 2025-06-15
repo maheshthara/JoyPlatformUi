@@ -27,3 +27,21 @@ body {
 .footer a:hover {
     text-decoration: underline; /* Underline on hover */
 }
+/* Add to your styles.css or component-specific styles */
+.toast-success {
+    background-color: #28a745 !important; /* Success color */
+  }
+  .toast-error {
+    background-color: #dc3545 !important; /* Error color */
+  }
+  @media (max-width: 600px) {
+    .role-selector {
+      flex-direction: column;
+    }
+  
+    .role-selector button {
+      margin-bottom: 10px;
+    }
+  }
+  
+  

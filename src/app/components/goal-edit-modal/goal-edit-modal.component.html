@@ -1,0 +1,42 @@
+<div class="modal" *ngIf="showModal">
+    <div class="modal-content">
+      <span class="close-btn" (click)="closeModal()">&times;</span>
+      <h3 style="color:chocolate;">Update Goal</h3>
+      <form (ngSubmit)="saveGoal()">
+        <div class="form-group">
+            <label for="targetDate">Goal ID</label>
+            <input
+              type="number"
+              [(ngModel)]="editingGoal.goalId"
+              name="targetDate"
+              required disabled=""
+            />
+          </div>
+        <div class="form-group">
+          <label for="goalTitle">Goal Title:</label>
+          <input
+            type="text"
+            [(ngModel)]="editingGoal.goalTitle"
+            name="goalTitle"
+            placeholder="Goal Name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <input
+            type="text"
+            [(ngModel)]="editingGoal.description"
+            name="description"
+            placeholder="Description"
+            required
+          />
+        </div>
+        <div class="form-actions">
+          <button type="submit">Save</button>
+          <button type="button" (click)="closeModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

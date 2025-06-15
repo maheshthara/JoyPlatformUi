@@ -1,0 +1,51 @@
+/* Confirmation Container */
+.confirmation-container {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+/* Button Styling */
+.btn-gradient {
+  background: linear-gradient(45deg, #007bff, #00c6ff);
+  color: #fff;
+  border: none;
+  transition: background 0.3s ease-in-out;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(45deg, #00c6ff, #007bff);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Event Card Styling */
+.card {
+  border-radius: 15px;
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+/* Event Name Styling */
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Event Description Styling */
+.text-muted {
+  color: #6c757d;
+}
+
+/* Error Message Styling */
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* Loading Spinner */
+.loading-message .spinner-border {
+  width: 3rem;
+  height: 3rem;
+}

@@ -1,0 +1,164 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f5f7; /* Light background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Login Page Container */
+  .login-page {
+    width: 100%;
+    max-width: 500px;
+    margin: 50px auto;
+    text-align: center;
+    background: #ffffff; /* White card background */
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Role Selector (Switch Container) */
+  .role-selector {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    background: #eaeaea; /* Neutral background */
+    border-radius: 30px;
+    padding: 5px;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 30px; /* Spacing below the switch */
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); /* Subtle elevation */
+  }
+  
+  /* Sliding Highlight */
+  .slider {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    height: calc(100% - 10px);
+    width: 50%; /* Half the width of the container */
+    background: linear-gradient(135deg, #ff7b7b, #ffb57b); /* Gradient for highlight */
+    border-radius: 30px;
+    transition: transform 0.3s ease-in-out;
+    z-index: 0; /* Below the buttons */
+  }
+  
+  /* Role Buttons */
+  .role-selector button {
+    flex: 1;
+    position: relative;
+    z-index: 1; /* Above the slider */
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    background: none;
+    border: none;
+    color: #555; /* Inactive text color */
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .role-selector button.active {
+    color: white; /* Active text color */
+  }
+  
+  .role-selector button:hover {
+    color: #888; /* Subtle hover effect */
+  }
+  
+  /* Login Form Container */
+  .login-form {
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #fff;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1); /* Card shadow */
+  }
+  
+  .signin-container {
+    padding: 20px;
+    background: #f8f9fa; /* Light gray background for the form */
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle depth */
+  }
+  
+  /* Form Styles */
+  .form-group {
+    text-align: left; /* Align labels and inputs */
+  }
+  
+  .form-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333; /* Dark text for labels */
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .form-control:focus {
+    border-color: #ff7b7b; /* Highlight border */
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 123, 123, 0.5); /* Focus shadow */
+  }
+  
+  .btn {
+    background: linear-gradient(135deg, #ff7b7b, #ffb57b); /* Gradient button */
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .btn:hover {
+    background: linear-gradient(135deg, #ff5a5a, #ff9a5a); /* Darker gradient on hover */
+  }
+  
+  /* Sign Up Link */
+  .signup-link {
+    color: #ff7b7b;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .signup-link:hover {
+    color: #ff5a5a; /* Slightly darker hover color */
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .login-page {
+      width: 90%; /* Full width on smaller screens */
+      padding: 15px;
+    }
+  
+    .role-selector {
+      max-width: 100%; /* Full width for the switch container */
+    }
+  
+    .form-control {
+      font-size: 14px; /* Slightly smaller inputs */
+    }
+  
+    .btn {
+      font-size: 14px; /* Slightly smaller buttons */
+    }
+  }
+  
